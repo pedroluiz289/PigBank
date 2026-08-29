@@ -23,7 +23,7 @@
                 <a class="acoes-botao" th:href="@{/conta-corrente/editar}">
                     <span class="material-symbols-outlined">edit</span>
                 </a>
-                <a class="acoes-botao" th:href="@{/}">
+                <a class="acoes-botao" th:href="@{/sair}">
                     <span class="material-symbols-outlined">logout</span>
                 </a>
             </div>
@@ -36,7 +36,7 @@
                         <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
                     </button>
                 </div>
-                <p id="saldo-valor">R$ 0.00</p>
+                <p th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="saldo-valor">R$ 0.00</p>
                 <div id="saldo-linha"></div>
             </section>
             <section id="acoes-rapidas">
