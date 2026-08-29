@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/corrente.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
+    <title>PigBank - Conta Corrente</title>
+</head>
+<body>
+    <main id="main-container">
+        <header id="cabecalho">
+            <div id="usuario-informacoes">
+                <div id="avatar">
+                    <span id="avatar-icone" class="material-symbols-outlined">person</span>
+                </div>
+                <div id="usuario-texto">
+                    <p id="saudacoes">Olá,</p>
+                    <p th:text="${usuario.nome}" id="usuario-nome">Nome</p>
+                </div>
+            </div>
+            <div id="usuario-acoes">
+                <a class="acoes-botao" th:href="@{/conta-corrente/editar}">
+                    <span class="material-symbols-outlined">edit</span>
+                </a>
+                <a class="acoes-botao" th:href="@{/}">
+                    <span class="material-symbols-outlined">logout</span>
+                </a>
+            </div>
+        </header>
+        <section id="dashboard">
+            <section id="saldo-container">
+                <div id="saldo-cabecalho">
+                    <p id="saldo-titulo">Saldo disponível em Conta Corrente</p>
+                    <button id="botao-mostrar-saldo">
+                        <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
+                    </button>
+                </div>
+                <p id="saldo-valor">R$ 0.00</p>
+                <div id="saldo-linha"></div>
+            </section>
+            <section id="acoes-rapidas">
+                <a class="item-acao" href="">
+                    <div class="item-icone">
+                        <span class="material-symbols-outlined">account_balance</span>
+                    </div>
+                    <p>Deposito</p>
+                </a>
+                <a class="item-acao" href="">
+                    <div class="item-icone">
+                        <span class="material-symbols-outlined">payment_arrow_down</span>
+                    </div>
+                    <p>Sacar</p>
+                </a>
+                <a class="item-acao" href="">
+                    <div class="item-icone">
+                        <span class="material-symbols-outlined">receipt_long</span>
+                    </div>
+                    <p>Extrato</p>
+                </a>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

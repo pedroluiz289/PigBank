@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
+    <title>PigBank - Bem vindo</title>
+</head>
+<body>
+    <main id="fundo-index">
+        <section id="container-index">
+            <img id="icone-index" th:src="@{/images/icone.png}" alt="Icone de porco">
+            <h1 id="titulo-index">PigBank</h1>
+            <p id="subtitulo-index">Selecione o tipo de conta para acessar</p>
+            <div id="botoes-container">
+                <a th:href="@{/conta-corrente}" class="botao">
+                    <div class="botao-conteudo">
+                        <span class="material-symbols-outlined">credit_card</span>
+                        <span>Conta Corrente</span>
+                    </div>
+                    <span class="material-symbols-outlined setas">arrow_forward_ios</span>
+                </a>
+                <a th:href="@{/conta-poupanca}" class="botao">
+                    <div class="botao-conteudo">
+                        <span class="material-symbols-outlined">savings</span>
+                        <span>Conta Poupança</span>
+                    </div>
+                    <span class="material-symbols-outlined setas">arrow_forward_ios</span>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
