@@ -7,7 +7,7 @@
     <title>PigBank - Editar Perfil</title>
 </head>
 <body>
-    <form action="" method="post" th:object="${usuario}">
+    <form th:action="@{/corrente/salvar}" method="post" th:object="${usuario}">
         <label for="nome">Nome:</label>
         <input type="text" name="nome" id="nome-input" th:field="*{nome}">
 

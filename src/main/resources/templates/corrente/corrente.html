@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/corrente.css}">
+    <link rel="stylesheet" th:href="@{/css/corrente/corrente.css}">
     <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <title>PigBank - Conta Corrente</title>
 </head>
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div id="usuario-acoes">
-                <a class="acoes-botao" th:href="@{/conta-corrente/editar}">
+                <a class="acoes-botao" th:href="@{/corrente/editar}">
                     <span class="material-symbols-outlined">edit</span>
                 </a>
                 <a class="acoes-botao" th:href="@{/sair}">
@@ -31,16 +31,26 @@
         <section id="dashboard">
             <section id="saldo-container">
                 <div id="saldo-cabecalho">
-                    <p id="saldo-titulo">Saldo disponível em Conta Corrente</p>
+                    <p id="saldo-titulo">Saldo disponível</p>
                     <button id="botao-mostrar-saldo">
                         <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
                     </button>
                 </div>
                 <p th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="saldo-valor">R$ 0.00</p>
                 <div id="saldo-linha"></div>
+                <div id="saldo-detalhes">
+                    <div class="detalhes-item">
+                        <p class="detalhes-titulo">Cheque Especial</p>
+                        <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.limiteTotal, 1, 2)}">R$ 0.00</strong>
+                    </div>
+                    <div class="detalhes-item">
+                        <p class="detalhes-titulo">Limite Usado</p>
+                        <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.limiteUsado, 1, 2)}">R$ 0.00</strong>
+                    </div>
+                </div>
             </section>
             <section id="acoes-rapidas">
-                <a class="item-acao" href="">
+                <a class="item-acao" th:href="@{/corrente/deposito}">
                     <div class="item-icone">
                         <span class="material-symbols-outlined">account_balance</span>
                     </div>

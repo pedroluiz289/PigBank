@@ -2,41 +2,70 @@ package com.example.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.ui.Model;
 
-import com.example.demo.models.Usuario;
+import com.example.demo.models.Corrente;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class BancoController {
+    private Corrente corrente;
+
     @GetMapping("/")
     public String index() {
         return "index";
     }
 
+    /*
+       ================
+        Conta corrente
+       ================
+    */
+
     @GetMapping("/entrar-corrente")
     public String correnteEntrar(Model model, HttpSession session) {
-        Usuario usuario = new Usuario("Usuario(a)", 0.00);
+        if (corrente == null) {
+            corrente = new Corrente("Usuario(a)", 0, 500, 0);
+            System.out.println("novo");
+        }
 
-        session.setAttribute("usuario", usuario);
+        session.setAttribute("usuario", corrente);
         session.setAttribute("tipo", "corrente");
 
-        return "redirect:/conta-corrente/dashboard";
+        return "redirect:/corrente/dashboard";
     }
 
-    @GetMapping("/conta-corrente/dashboard")
-    public String correnteDashboard(HttpSession session, Model model) {
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-
-        model.addAttribute("usuario", usuario);
+    @GetMapping("/corrente/dashboard")
+    public String correnteDashboard(Model model) {
+        model.addAttribute("usuario", corrente);
         return "corrente/corrente";
     }
 
-    @GetMapping("/conta-corrente/editar")
+    @GetMapping("/corrente/editar")
     public String correnteEditarPerfil(Model model) {
-       
+        model.addAttribute("usuario", corrente);
         return "corrente/editarperfil";
     }
+
+    @PostMapping("/corrente/salvar")
+    public String salvarInformacoes(@ModelAttribute("usuario") Corrente form) {
+        corrente.setNome(form.getNome());
+        return "redirect:/corrente/dashboard";
+    }
+
+    @GetMapping("/corrente/deposito")
+    public String correnteDeposito() {
+        return "corrente/deposito";
+    }
+
+
+    /*
+       ================
+        Conta poupanca
+       ================
+    */
 
     /*@GetMapping("/entrar-poupanca")
     public String entrarPoupanca(Model model, HttpSession session) {
@@ -45,12 +74,15 @@ public class BancoController {
         model.addAttribute("usuario", usuario);
         session.setAttribute("tipo", "poupanca");
         
-        return "redirect:/conta-poupanca/dashboard";
+        return "redirect:/poupanca/dashboard";
     }
 
-    @GetMapping("/conta-poupanca/dashboard")
-    public String contaPoupancaWeb() {
-        return "poupanca";
+    @GetMapping("/poupanca/dashboard")
+    public String contaPoupancaWeb(HttpSession session, Model model) {
+        usuario = (Usuario) session.getAttribute("usuario");
+
+        model.addAttribute("usuario", usuario);
+        return "poupanca/poupanca";
     }*/
 
     @GetMapping("/sair")

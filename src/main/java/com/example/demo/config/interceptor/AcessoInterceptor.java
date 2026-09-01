@@ -15,12 +15,12 @@ public class AcessoInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         String tipo = (String) session.getAttribute("tipo");
 
-        if (uri.startsWith("/corrente") && !tipo.equals("corrente")) {
+        if (uri.startsWith("/corrente") && !"corrente".equals(tipo)) {
             response.sendRedirect("/");
             return false;
         }
 
-        if (uri.startsWith("/poupanca") && !tipo.equals("poupanca")) {
+        if (uri.startsWith("/poupanca") && !"poupanca".equals(tipo)) {
             response.sendRedirect("/");
             return false;
         }

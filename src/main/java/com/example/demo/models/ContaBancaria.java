@@ -1,16 +1,24 @@
 package com.example.demo.models;
 
-public class Usuario {
+public class ContaBancaria {
     private String nome;
     private double saldo;
 
-    public Usuario() {
+    public ContaBancaria() {
         
     }
 
-    public Usuario(String nome, double saldo) {
+    public ContaBancaria(String nome, double saldo) {
         this.nome = nome;
         this.saldo = saldo;
+    }
+
+    public void depositar(double valor) {
+        this.saldo += valor;
+    }
+
+    public double sacar(double valor) {
+        return 0;
     }
 
     public void setNome(String nome) {
