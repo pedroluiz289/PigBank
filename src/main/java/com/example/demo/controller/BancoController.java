@@ -56,8 +56,15 @@ public class BancoController {
     }
 
     @GetMapping("/corrente/deposito")
-    public String correnteDeposito() {
+    public String correnteDeposito(Model model) {
+        model.addAttribute("usuario", corrente);
         return "corrente/deposito";
+    }
+
+    @PostMapping("/corrente/salvardeposito")
+    public String correnteSalvarDeposito(@ModelAttribute("usuario") Corrente form) {
+        corrente.depositar(form.getSaldo());
+        return "redirect:/corrente/dashboard";
     }
 
 

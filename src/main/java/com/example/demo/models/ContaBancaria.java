@@ -1,7 +1,11 @@
 package com.example.demo.models;
 
+import org.springframework.format.annotation.NumberFormat;
+
 public class ContaBancaria {
     private String nome;
+    
+    @NumberFormat(pattern = "#,##0.00")
     private double saldo;
 
     public ContaBancaria() {
