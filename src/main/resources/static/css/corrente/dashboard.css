@@ -140,7 +140,7 @@ body {
 #saldo-container {
     padding: 28px;
     border-radius: 20px;
-    background-image: linear-gradient(135deg, var(--cor-fundo-saldo2) 0%, var(--cor-fundo-saldo1) 100%);
+    background-image: linear-gradient(135deg, var(--cor-fundo-saldo1) 0%, var(--cor-fundo-saldo2) 100%);
     color: var(--cor-texto-saldo);
     box-shadow: 0px 10px 20px -5px var(--cor-sombra-fundo-saldo);
 }
@@ -167,7 +167,10 @@ body {
     background-color: var(--cor-fundo-mostrar-saldo);
 }
 
-#saldo-valor {
+#saldo-valor-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     font-weight: bold;
     font-size: 40px;
     margin-bottom: 16px;

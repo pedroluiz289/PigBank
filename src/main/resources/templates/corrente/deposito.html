@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/corrente/editar.css}">
     <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
-    <link rel="stylesheet" href="@{/css/corrente/editar.css}">
     <script th:src="@{/js/corrente/deposito.js}" defer></script>
     <title>PigBank - Deposito</title>
 </head>
@@ -20,7 +20,7 @@
             </div>
             <div class="header-saldo">
                 <p id="header-saldo-titulo">Saldo atual</p>
-                <strong id="header-valor">R$ 0.00</strong>
+                <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="header-valor">R$ 0.00</strong>
             </div>
         </header>
         <section class="card">

@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/corrente/corrente.css}">
+    <link rel="stylesheet" th:href="@{/css/corrente/dashboard.css}">
     <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
+    <script th:src="@{/js/corrente/dashboard.js}" defer></script>
     <title>PigBank - Conta Corrente</title>
 </head>
 <body>
@@ -32,11 +33,14 @@
             <section id="saldo-container">
                 <div id="saldo-cabecalho">
                     <p id="saldo-titulo">Saldo disponível</p>
-                    <button id="botao-mostrar-saldo">
+                    <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" onclick="mostrarSaldo(this)">
                         <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
                     </button>
                 </div>
-                <p th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="saldo-valor">R$ 0.00</p>
+                <div id="saldo-valor-container">
+                    <span>R$</span>
+                    <p th:text="${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="saldo-valor">0.00</p>
+                </div>
                 <div id="saldo-linha"></div>
                 <div id="saldo-detalhes">
                     <div class="detalhes-item">

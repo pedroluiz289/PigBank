@@ -7,11 +7,22 @@
     <title>PigBank - Editar Perfil</title>
 </head>
 <body>
-    <form th:action="@{/corrente/salvar}" method="post" th:object="${usuario}">
-        <label for="nome">Nome:</label>
-        <input type="text" name="nome" id="nome-input" th:field="*{nome}">
-
-        <button type="submit">Atualizar</button>
-    </form>
+    <main>
+        <header>
+            <div class="header-topo">
+                <a class="botao-voltar" th:href="@{/corrente/dashboard}">
+                    <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
+                    <span>Voltar</span>
+                </a>
+                <h1 class="header-titulo">Editar Perfil</h1>
+            </div>
+        </header>
+        <form th:action="@{/corrente/salvar}" method="post" th:object="${usuario}">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome-input" th:field="*{nome}">
+    
+            <button type="submit">Atualizar</button>
+        </form>
+    </main>
 </body>
 </html>
