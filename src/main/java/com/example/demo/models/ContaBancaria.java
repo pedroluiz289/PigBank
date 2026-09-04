@@ -2,7 +2,7 @@ package com.example.demo.models;
 
 import org.springframework.format.annotation.NumberFormat;
 
-public class ContaBancaria {
+abstract class ContaBancaria {
     private String nome;
     
     @NumberFormat(pattern = "#,##0.00")
@@ -17,13 +17,9 @@ public class ContaBancaria {
         this.saldo = saldo;
     }
 
-    public void depositar(double valor) {
-        this.saldo += valor;
-    }
+    public abstract void depositar(double valor);
 
-    public double sacar(double valor) {
-        return 0;
-    }
+    public abstract void sacar(double valor);
 
     public void setNome(String nome) {
         this.nome = nome;

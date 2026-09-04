@@ -27,8 +27,7 @@ public class BancoController {
     @GetMapping("/entrar-corrente")
     public String correnteEntrar(Model model, HttpSession session) {
         if (corrente == null) {
-            corrente = new Corrente("Usuario(a)", 0, 500, 0);
-            System.out.println("novo");
+            corrente = new Corrente("Usuario(a)", 0, 500);
         }
 
         session.setAttribute("usuario", corrente);
@@ -67,6 +66,17 @@ public class BancoController {
         return "redirect:/corrente/dashboard";
     }
 
+    @GetMapping("/corrente/saque")
+    public String correnteSaque(Model model) {
+        model.addAttribute("usuario", corrente);
+        return "corrente/saque";
+    }
+
+    @PostMapping("/corrente/sacar")
+    public String correnteSacar(@ModelAttribute("usuario") Corrente form) {
+        corrente.sacar(form.getSaldo());
+        return "redirect:/corrente/dashboard";
+    }
 
     /*
        ================

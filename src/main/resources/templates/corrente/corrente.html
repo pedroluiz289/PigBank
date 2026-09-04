@@ -44,12 +44,8 @@
                 <div id="saldo-linha"></div>
                 <div id="saldo-detalhes">
                     <div class="detalhes-item">
-                        <p class="detalhes-titulo">Cheque Especial</p>
-                        <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.limiteTotal, 1, 2)}">R$ 0.00</strong>
-                    </div>
-                    <div class="detalhes-item">
-                        <p class="detalhes-titulo">Limite Usado</p>
-                        <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.limiteUsado, 1, 2)}">R$ 0.00</strong>
+                        <p class="detalhes-titulo">Limite Disponivel</p>
+                        <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel, 1, 2)}">R$ 0.00</strong>
                     </div>
                 </div>
             </section>
@@ -60,18 +56,31 @@
                     </div>
                     <p>Deposito</p>
                 </a>
-                <a class="item-acao" href="">
+                <a class="item-acao" th:href="@{/corrente/saque}">
                     <div class="item-icone">
                         <span class="material-symbols-outlined">payment_arrow_down</span>
                     </div>
-                    <p>Sacar</p>
+                    <p>Saque</p>
                 </a>
-                <a class="item-acao" href="">
+                <a class="item-acao" th:href="@{/corrente/extrato}">
                     <div class="item-icone">
                         <span class="material-symbols-outlined">receipt_long</span>
                     </div>
                     <p>Extrato</p>
                 </a>
+            </section>
+            <section id="extrato">
+                <div id="extrato-header">
+                    <h3>Últimas Movimentações</h3>
+                    <a href="">Ver extrato completo</a>
+                </div>
+                <div id="lista-transacoes">
+                    <div th:each="t: ${usuario.transacao}">
+                        <p th:text="${t.tipo}"></p>
+                        <p th:text="${t.data}"></p>
+                        <p th:text="${t.valor}"></p>
+                    </div>
+                </div>
             </section>
         </section>
     </main>
