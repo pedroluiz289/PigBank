@@ -57,6 +57,8 @@
   --cor-sombra-fundo-extrato: rgba(0, 0, 0, 0.1);
   --cor-titulo-extrato: var(--_cinza-900);
   --cor-texto-extrato-completo: var(--cor-quaternaria);
+
+  --cor-linha-item-extrato: var(--_cinza-200);
 }
 
 * {
@@ -281,4 +283,27 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
+}
+
+.trasacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+    border-bottom: 2px dashed var(--cor-linha-item-extrato);
+}
+
+.informacoes-transacao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icone-trasacao {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
 }
