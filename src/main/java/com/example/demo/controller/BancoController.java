@@ -78,6 +78,12 @@ public class BancoController {
         return "redirect:/corrente/dashboard";
     }
 
+    @GetMapping("/corrente/extrato")
+    public String correnteExtrato(Model model) {
+        model.addAttribute("usuario", corrente);
+        return "corrente/extrato";
+    }
+
     /*
        ================
         Conta poupanca

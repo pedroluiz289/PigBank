@@ -71,16 +71,28 @@
             </section>
             <section id="extrato">
                 <div id="extrato-header">
-                    <h3>Últimas Movimentações</h3>
-                    <a href="">Ver extrato completo</a>
+                    <h3 id="extrato-titulo">Últimas Movimentações</h3>
+                    <a id="extrato-link" href="">Ver extrato completo</a>
                 </div>
-                <div id="lista-transacoes">
-                    <div th:each="t: ${usuario.transacao}">
-                        <p th:text="${t.tipo}"></p>
-                        <p th:text="${t.data}"></p>
-                        <p th:text="${t.valor}"></p>
+                <th:block th:if="${!#lists.isEmpty(usuario.transacao)}">
+                    <div id="lista-transacoes">
+                        <div class="trasacao" th:each="t, quantidade: ${usuario.transacao}" th:if="${quantidade.count < 5}">
+                            <div class="informacoes-transacao">
+                                <div class="icone-trasacao">
+                                    <span class="material-symbols-outlined">person</span>
+                                </div>
+                                <div class="detalhes-transacao">
+                                    <h4 th:text="${t.tipo}">Placeholder</h4>
+                                    <p th:text="${t.data}">00-00-00 00:00:00</p>
+                                </div>
+                            </div>
+                            <strong th:text="${#numbers.formatDecimal(t.valor, 1, 2)}"></strong>
+                        </div>
                     </div>
-                </div>
+                </th:block>
+                <th:block th:unless="${!#lists.isEmpty(usuario.transacao)}">
+                    <p>Placeholder</p>
+                </th:block>
             </section>
         </section>
     </main>

@@ -3,14 +3,22 @@
 
 :root {
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    --cor-primaria: #FCBBD1;
+
     --cor-titulo: #1E293B;
     --cor-subtitulo: #5C5C5E;
-    --cor-borda: #e2e8f0;
+
+    --cor-borda-icone: var(--cor-primaria);
+    --cor-icone: var(--cor-primaria);
+
+    --cor-fundo-container: white;
+
+    --cor-borda-botao: #e2e8f0;
     --cor-texto-botao: #1E293B;
     --cor-fundo-botao: #f8fafc;
-    --cor-borda-botao-ativo: #F2B8BC;
-    --cor-sombra-botao-ativo: rgba(213, 143, 151, 0.12);
-    --cor-borda-icone: #FFC7C7;
+    --cor-borda-botao-ativo: var(--cor-primaria);
+    --cor-sombra-botao-ativo: rgba(252, 187, 209, 0.5);
 }
 
 * {
@@ -31,7 +39,7 @@
 }
 
 #container-index {
-    background-color: white;
+    background-color: var(--cor-fundo-container);
     padding: 40px 30px;
     border-radius: 15px;
     max-width: 420px;
@@ -43,6 +51,8 @@
 
 #icone-index {
     border: 5px solid var(--cor-borda-icone);
+    color: var(--cor-primaria);
+    font-size: 64px;
     border-radius: 50%;
     padding: 20px;
     margin-bottom: 15px;
@@ -71,7 +81,7 @@
     justify-content: space-between;
     padding: 16px 20px;
     border-radius: 12px;
-    border: 2px solid var(--cor-borda);
+    border: 2px solid var(--cor-borda-botao);
     text-decoration: none;
     color: var(--cor-texto-botao);
     background-color: var(--cor-fundo-botao);
