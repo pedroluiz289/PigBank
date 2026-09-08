@@ -1,6 +1,10 @@
 package com.example.demo.models;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Corrente extends ContaBancaria {
@@ -48,6 +52,12 @@ public class Corrente extends ContaBancaria {
     }
 
     public List<Transacao> getTransacao() {
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        this.transacoes.sort(Comparator.comparing(
+            (Transacao t) -> LocalDateTime.parse(t.getData(), formatador)
+        ).reversed());
+
         return this.transacoes;
     }
 }

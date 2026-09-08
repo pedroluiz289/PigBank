@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,edit,logout,payment_arrow_down,person,receipt_long,visibility,visibility_off");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,edit,logout,payment_arrow_down,person,receipt,receipt_long,visibility,visibility_off");
 
 :root {
   --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -56,9 +56,24 @@
   --cor-fundo-extrato: white;
   --cor-sombra-fundo-extrato: rgba(0, 0, 0, 0.1);
   --cor-titulo-extrato: var(--_cinza-900);
-  --cor-texto-extrato-completo: var(--cor-quaternaria);
+  --cor-texto-extrato-completo: var(--cor-quaternaria); 
+
+  --cor-titulo-detalhes-extrato: #1e293b;
+  --cor-texto-detalhes-extrato: #94a3b8;
+
+  --cor-fundo-icone-extrato: var(--_cinza-100);
+  --cor-icone-extrato: var(--_cinza-600);
+
+  --cor-fundo-icone-transacao-vazia: var(--_cinza-100);
+  --cor-icone-transacao-vazia: var(--_cinza-600);
+
+  --cor-titulo-transacao-vazia: var(--_cinza-700);
+  --cor-texto-transacao-vazia: var(--_cinza-500);
 
   --cor-linha-item-extrato: var(--_cinza-200);
+
+  --cor-valor-deposito-extrato: #00A84E;
+  --cor-valor-saque-extrato: #E72F4B;
 }
 
 * {
@@ -79,7 +94,7 @@ body {
 #main-container {
     width: 100%;
     padding: 24px;
-    max-width: 800px;
+    max-width: 825px;
 }
 
 #cabecalho {
@@ -290,6 +305,9 @@ body {
     align-items: center;
     justify-content: space-between;
     padding-bottom: 12px;
+}
+
+.transacao-linha {
     border-bottom: 2px dashed var(--cor-linha-item-extrato);
 }
 
@@ -306,4 +324,59 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
+    background-color: var(--cor-fundo-icone-extrato);
+    color: var(--cor-icone-extrato);
+}
+
+.detalhes-transacao h4 {
+    font-size: 16px;
+    color: var(--cor-titulo-detalhes-extrato);
+}
+
+.detalhes-transacao p {
+    font-size: 14px;
+    color: var(--cor-texto-detalhes-extrato);
+}
+
+#transacao-vazia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 0px 12px 0px;
+}
+
+#transacao-vazia-icone {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--cor-fundo-icone-transacao-vazia);
+    color: var(--cor-icone-transacao-vazia);
+    margin-bottom: 5px;
+}
+
+#transacao-vazia-icone > span {
+    font-size: 36px;
+}
+
+#transacao-vazia-titulo {
+    font-size: 16px;
+    color: var(--cor-titulo-transacao-vazia);
+}
+
+#transacao-vazia-texto {
+    font-size: 14px;
+    color: var(--cor-texto-transacao-vazia);
+}
+
+.valor-deposito {
+    color: var(--cor-valor-deposito-extrato);
+}
+
+.valor-saque {
+    color: var(--cor-valor-saque-extrato);
 }

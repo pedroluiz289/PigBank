@@ -35,18 +35,19 @@
         <section class="card">
             <form th:action="@{/corrente/salvardeposito}" method="post" th:object="${usuario}">
                 <div id="campo-saldo">
-                    <label for="saldo">Informe o valor do depósito</label>
+                    <label for="saldo">Valor do depósito</label>
                     <div class="saldo-wrapper">
                         <span class="simbolo-saldo">R$</span>
                         <input type="text" name="saldo" id="saldo" class="saldo-input" placeholder="0,00" required>
                     </div>
                 </div>
                 <div id="valores-rapidos">
-                    <button class="botao-rapido" type="button" onclick="adicionarValor(5)">R$ 5 +</button>
-                    <button class="botao-rapido" type="button" onclick="adicionarValor(10)">R$ 10 +</button>
-                    <button class="botao-rapido" type="button" onclick="adicionarValor(20)">R$ 20 +</button>
-                    <button class="botao-rapido" type="button" onclick="adicionarValor(50)">R$ 50 +</button>
-                    <button class="botao-rapido" type="button" onclick="adicionarValor(100)">R$ 100 +</button>
+                    <button class="botao-rapido" type="button" onclick="adicionarValor(5)">+ R$ 5</button>
+                    <button class="botao-rapido" type="button" onclick="adicionarValor(10)">+ R$ 10</button>
+                    <button class="botao-rapido" type="button" onclick="adicionarValor(20)">+ R$ 20</button>
+                    <button class="botao-rapido" type="button" onclick="adicionarValor(50)">+ R$ 50</button>
+                    <button class="botao-rapido" type="button" onclick="adicionarValor(100)">+ R$ 100</button>
+                    <button class="botao-rapido" type="button" onclick="adicionarValor(200)">+ R$ 200</button>
                 </div>
                 <div id="botoes-container">
                     <button type="reset" id="botao-limpar">

@@ -4,13 +4,14 @@
 :root {
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    --cor-primaria: #F2B8BC;
-    --cor-segundaria: #f1a7b5;
+    --cor-primaria: #F98FB4;
+    --cor-segundaria: #FCBBD1;
 
     --cinza-900: #0f172a;
     --cinza-700: #334155;
     --cinza-600: #475569;
     --cinza-500: #64748b;
+    --cinza-300: #C4CAD2;
     --cinza-200: #e2e8f0;
     --cinza-100: #f1f5f9;
     --cinza-50: #f8fafc;
@@ -24,7 +25,7 @@
     --cor-fundo-saldo1: var(--cor-segundaria);
     --cor-fundo-saldo2: var(--cor-primaria);
     --cor-texto-saldo: white;
-    --cor-sombra-fundo-saldo: rgba(214, 92, 115, 0.3);
+    --cor-sombra-fundo-saldo: rgba(249, 143, 180, 0.5);
 
     --cor-icone-mostrar-saldo: white;
     --cor-fundo-mostrar-saldo: rgba(255, 255, 255, 0.3);
@@ -38,9 +39,10 @@
     --cor-borda-campo-saldo: #cbd5e1;
     --cor-texto-placeholder-campo: var(--cinza-900);
 
-    --cor-fundo-acao-rapida: white;
+    --cor-fundo-acao-rapida: var(--cinza-100);
     --cor-texto-acao-rapida: var(--cinza-600);
     --cor-borda-acao-rapida: var(--cinza-200);
+    --cor-borda-acao-rapida-hover: var(--cinza-300);
 
     --cor-fundo-botao-limpar: var(--cinza-100);
     --cor-texto-botao-limpar: var(--cinza-500);
@@ -63,7 +65,7 @@
 
 .main-container {
     width: 100%;
-    max-width: 560px;
+    max-width: 625px;
 }
 
 .header-topo {
@@ -95,7 +97,7 @@
 }
 
 .header-saldo {
-    background-image: linear-gradient(135deg, var(--cor-fundo-saldo1) 0%, var(--cor-fundo-saldo2) 100%);
+    background-image: linear-gradient(135deg, var(--cor-fundo-saldo2) 0%, var(--cor-fundo-saldo1) 100%);
     color: var(--cor-texto-saldo);
     padding: 20px 24px;
     border-radius: 16px;
@@ -103,7 +105,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 10px 15px -3px var(--cor-sombra-fundo-saldo);
+    box-shadow: 0px 5px 10px var(--cor-sombra-fundo-saldo);
 }
 
 #header-saldo-titulo {
@@ -137,7 +139,7 @@
     background-color: var(--cor-fundo-card);
     border-radius: 20px;
     padding: 32px;
-    box-shadow: 0px 1px 3px var(--cor-sombra-card);
+    box-shadow: 0px 3px 5px var(--cor-sombra-card);
 }
 
 #campo-saldo {
@@ -148,7 +150,7 @@
 }
 
 label {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: var(--cor-texto-label);
     margin-bottom: 4px;
@@ -186,7 +188,7 @@ label {
 }
 
 .botao-rapido {
-    border: 1px solid var(--cor-borda-acao-rapida);
+    border: 2px solid var(--cor-borda-acao-rapida);
     background-color: var(--cor-fundo-acao-rapida);
     color: var(--cor-texto-acao-rapida);
     padding: 8px 12px;
@@ -195,6 +197,10 @@ label {
     cursor: pointer;
     font-weight: bold;
     flex-grow: 1;
+}
+
+.botao-rapido:hover {
+    border-color: var(--cor-borda-acao-rapida-hover);
 }
 
 #botoes-container {
