@@ -17,19 +17,28 @@
                     <span>Voltar</span>
                 </a>
                 <h1 class="header-titulo">Saque</h1>
+                <div style="width: 80px;"></div>
             </div>
             <div class="header-saldo">
-                <p id="header-saldo-titulo">Saldo atual</p>
-                <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="header-valor">R$ 0.00</strong>
+                <div>
+                    <p id="header-saldo-titulo">Saldo Atual</p>
+                    <div id="saldo-valor-container">
+                        <span class="header-valor">R$</span>
+                        <strong id="saldo-valor" th:text="${#numbers.formatDecimal(usuario.saldo, 1, 2)}" class="header-valor">0.00</strong>
+                    </div>
+                </div>
+                <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" type="button" onclick="mostrarSaldo(this)">
+                    <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
+                </button>
             </div>
         </header>
         <section class="card">
             <form th:action="@{/corrente/sacar}" method="post" th:object="${usuario}">
-                <div>
-                    <label for="saldo">Informe o valor do saque</label>
-                    <div>
-                        <span>R$</span>
-                        <input type="text" name="saldo" id="saldo" placeholder="0,00" required>
+                <div id="campo-saldo">
+                    <label for="saldo">Valor do Saque</label>
+                    <div class="saldo-wrapper">
+                        <span class="simbolo-saldo">R$</span>
+                        <input type="text" name="saldo" id="saldo" class="saldo-input" placeholder="0,00" required>
                     </div>
                 </div>
                 <div id="valores-rapidos">
@@ -38,9 +47,18 @@
                     <button class="botao-rapido" type="button" onclick="adicionarValor(20)">- R$ 20</button>
                     <button class="botao-rapido" type="button" onclick="adicionarValor(50)">- R$ 50</button>
                     <button class="botao-rapido" type="button" onclick="adicionarValor(100)">- R$ 100</button>
+                    <button class="botao-rapido" type="button" onclick="adicionarValor(200)">- R$ 200</button>
                 </div>
-                <button type="reset">Limpar</button>
-                <button type="submit">Confirmar Saque</button>
+                <div id="botoes-container">
+                    <button type="reset" id="botao-limpar">
+                        <span class="material-symbols-outlined">refresh</span>
+                        <span>Limpar</span>
+                    </button>
+                    <button type="submit" id="botao-deposito">
+                        <span class="material-symbols-outlined">payment_arrow_down</span>
+                        <span>Confirmar Saque</span>
+                    </button>
+                </div>
             </form>
         </section>
     </main>

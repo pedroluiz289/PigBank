@@ -21,7 +21,7 @@
             </div>
             <div class="header-saldo">
                 <div>
-                    <p id="header-saldo-titulo">Saldo atual</p>
+                    <p id="header-saldo-titulo">Saldo Atual</p>
                     <div id="saldo-valor-container">
                         <span class="header-valor">R$</span>
                         <strong id="saldo-valor" th:text="${#numbers.formatDecimal(usuario.saldo, 1, 2)}" class="header-valor">0.00</strong>
@@ -35,7 +35,7 @@
         <section class="card">
             <form th:action="@{/corrente/salvardeposito}" method="post" th:object="${usuario}">
                 <div id="campo-saldo">
-                    <label for="saldo">Valor do depósito</label>
+                    <label for="saldo">Valor do Depósito</label>
                     <div class="saldo-wrapper">
                         <span class="simbolo-saldo">R$</span>
                         <input type="text" name="saldo" id="saldo" class="saldo-input" placeholder="0,00" required>
@@ -51,10 +51,13 @@
                 </div>
                 <div id="botoes-container">
                     <button type="reset" id="botao-limpar">
-                        <span class="material-symbols-outlined"></span>
+                        <span class="material-symbols-outlined">refresh</span>
                         <span>Limpar</span>
                     </button>
-                    <button type="submit" id="botao-deposito">Confirmar Depósito</button>
+                    <button type="submit" id="botao-deposito">
+                        <span class="material-symbols-outlined">attach_money</span>
+                        <span>Confirmar Depósito</span>
+                    </button>
                 </div>
             </form>
         </section>
