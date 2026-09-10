@@ -1,12 +1,11 @@
 package com.example.demo.models;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class Transacao {
     private String tipo;
-    private String data;
     private double valor;
+    private LocalDateTime data;
 
     public Transacao() {
 
@@ -15,14 +14,14 @@ public class Transacao {
     public Transacao(String tipo, double valor) {
         this.tipo = tipo;
         this.valor = valor;
-        this.data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+        this.data = LocalDateTime.now();
     }
 
     public String getTipo() {
         return this.tipo;
     }
 
-    public String getData() {
+    public LocalDateTime getData() {
         return this.data;
     }
 

@@ -8,40 +8,52 @@
     <script th:src="@{/js/corrente/extrato.js}" defer></script>
     <title>PigBank - Extrato</title>
 </head>
-<body>
-    <main>
+<body class="body-container">
+    <main class="main-container">
         <header>
             <div class="header-topo">
                 <a class="botao-voltar" th:href="@{/corrente/dashboard}">
                     <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
                     <span>Voltar</span>
                 </a>
-                <h1 class="header-titulo">Saque</h1>
+                <h1 class="header-titulo">Extrato da Conta</h1>
                 <button type="button">
-                    <span></span>
+                    <span class="material-symbols-outlined">download</span>
                     <span>Exportar</span>
                 </button>
             </div>
         </header>
         <section id="resumo-financas">
             <div class="card-resumo">
-                <p>Entrada</p>
-                <strong>+ R$ 0,00</strong>
+                <p>Entradas</p>
+                <strong th:text="'+ R$ ' + ${#numbers.formatDecimal(usuario.entradas, 1, 2)}">R$ 0,00</strong>
             </div>
             <div class="card-resumo">
                 <p>Saídas</p>
-                <strong>- R$ 0,00</strong>
+                <strong th:text="'- R$ ' + ${#numbers.formatDecimal(usuario.saidas, 1, 2)}">R$ 0,00</strong>
             </div>
             <div class="card-resumo">
                 <p>Saldo Atual</p>
                 <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}">R$ 0,00</strong>
             </div>
         </section>
-        <section id="">
-            
+        <section id="filtro-busca">
+            <div id="container-busca">
+                <span class="material-symbols-outlined">search</span>
+                <input id="campo-busca" type="text">
+            </div>
+            <div id="tags-filtro">
+                <button class="tag">Todos</button>
+                <button class="tag">Entradas</button>
+                <button class="tag">Saídas</button>
+            </div>
         </section>
-        <section id="">
+        <section id="lista-transacoes">
+            <div>
+                <th:block th>
 
+                </th:block>
+            </div>
         </section>
     </main>
 </body>

@@ -4,6 +4,8 @@ import org.springframework.format.annotation.NumberFormat;
 
 abstract class ContaBancaria {
     private String nome;
+    private double entradas;
+    private double saidas;
     
     @NumberFormat(pattern = "#,##0.00")
     private double saldo;
@@ -12,9 +14,11 @@ abstract class ContaBancaria {
         
     }
 
-    public ContaBancaria(String nome, double saldo) {
+    public ContaBancaria(String nome, double saldo, double entradas, double saidas) {
         this.nome = nome;
         this.saldo = saldo;
+        this.entradas = entradas;
+        this.saidas = saidas;
     }
 
     public abstract void depositar(double valor);
@@ -27,6 +31,22 @@ abstract class ContaBancaria {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public void setEntradas(double valor) {
+        this.entradas = valor;
+    }
+
+    public void setSaidas(double valor) {
+        this.saidas = valor;
+    }
+
+    public double getEntradas() {
+        return this.entradas;
+    }
+
+    public double getSaidas() {
+        return this.saidas;
     }
 
     public String getNome() {

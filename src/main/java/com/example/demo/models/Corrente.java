@@ -1,8 +1,5 @@
 package com.example.demo.models;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -16,7 +13,7 @@ public class Corrente extends ContaBancaria {
     }
 
     public Corrente(String nome, double saldo, double limiteTotal) {
-        super(nome, saldo);
+        super(nome, saldo, 0, 0);
         this.limiteTotal = limiteTotal;
         this.transacoes = new ArrayList<>();
     }
@@ -28,17 +25,21 @@ public class Corrente extends ContaBancaria {
     @Override
     public void depositar(double valor) {
         double saldo = getSaldo();
+        double entradas = getEntradas();
 
         setSaldo(saldo + valor);
+        setEntradas(entradas + valor);
         adicionarTransacao("Deposito", valor);
     }
 
     @Override
     public void sacar(double valor) {
         double saldo = getSaldo();
+        double saidas = getSaidas();
 
         if (saldo + this.limiteTotal >= valor) {
             setSaldo(saldo - valor);
+            setSaidas(saidas + valor);
             adicionarTransacao("Saque", valor);
         }
     }
@@ -52,12 +53,7 @@ public class Corrente extends ContaBancaria {
     }
 
     public List<Transacao> getTransacao() {
-        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-
-        this.transacoes.sort(Comparator.comparing(
-            (Transacao t) -> LocalDateTime.parse(t.getData(), formatador)
-        ).reversed());
-
+        this.transacoes.sort(Comparator.comparing(Transacao::getData).reversed());
         return this.transacoes;
     }
 }
