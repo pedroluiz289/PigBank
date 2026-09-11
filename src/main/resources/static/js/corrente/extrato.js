@@ -1,0 +1,31 @@
+let tipoAtual = "todos";
+
+function aplicarFiltro(tipo) {
+    tipoAtual = tipo;
+    filtrarTransacoes();
+}
+
+function filtrarTransacoes() {
+    const campoValor = document.getElementById("campo-busca").value.toLowerCase();
+    const transacao = document.querySelectorAll(".trasacao");
+
+    transacao.forEach(item => {
+        const tipo = item.querySelector("h4").innerText.toLowerCase();
+        const valor = tipo.includes(campoValor);
+        let filtroAchado = false;
+
+        if (tipoAtual === "todos") {
+            filtroAchado = true;
+        } else if (tipoAtual === "saque" && tipo === "saque") {
+            filtroAchado = true;
+        } else if (tipoAtual === "deposito" && tipo === "deposito") {
+            filtroAchado = true;
+        }
+
+        if (valor && filtroAchado) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}

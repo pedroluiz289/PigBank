@@ -40,20 +40,41 @@
         <section id="filtro-busca">
             <div id="container-busca">
                 <span class="material-symbols-outlined">search</span>
-                <input id="campo-busca" type="text">
+                <input type="text" id="campo-busca" placeholder="Buscar pelo tipo" onkeyup="filtrarTransacoes()">
             </div>
             <div id="tags-filtro">
-                <button class="tag">Todos</button>
-                <button class="tag">Entradas</button>
-                <button class="tag">Saídas</button>
+                <button class="tag" onclick="aplicarFiltro('todos')">Todos</button>
+                <button class="tag" onclick="aplicarFiltro('deposito')">Entradas</button>
+                <button class="tag" onclick="aplicarFiltro('saque')">Saídas</button>
             </div>
         </section>
         <section id="lista-transacoes">
-            <div>
-                <th:block th>
-
-                </th:block>
-            </div>
+            <th:block th:if="${!#lists.isEmpty(usuario.transacao)}">
+                <div class="trasacao" th:each="t, quantidade: ${usuario.transacao}" th:if="${quantidade.count < 6}"
+                    th:classappend="${quantidade.count == 5 or quantidade.last} ? '' : 'transacao-linha'">
+                    <div class="informacoes-transacao">
+                        <div class="icone-trasacao">
+                            <span th:text="${t.tipo == 'Deposito'} ? 'account_balance' : 'payment_arrow_down'"
+                                class="material-symbols-outlined">person</span>
+                        </div>
+                        <div class="detalhes-transacao">
+                            <h4 th:text="${t.tipo}">Placeholder</h4>
+                            <p th:text="${@dateUtils.tempoRelativo(t.data)}">00-00-00 00:00:00</p>
+                        </div>
+                    </div>
+                    <strong th:classappend="${t.tipo == 'Deposito'} ? 'valor-deposito' : 'valor-saque'"
+                        th:text="${t.tipo == 'Deposito'} ? '+ R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)} : '- R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)}"></strong>
+                </div>
+            </th:block>
+            <th:block th:unless="${!#lists.isEmpty(usuario.transacao)}">
+                <div id="transacao-vazia">
+                    <div id="transacao-vazia-icone">
+                        <span class="material-symbols-outlined">receipt</span>
+                    </div>
+                    <h3 id="transacao-vazia-titulo">Nenhuma movimentação ainda</h3>
+                    <p id="transacao-vazia-texto">Você ainda não realizou transações nesta conta.</p>
+                </div>
+            </th:block>
         </section>
     </main>
 </body>

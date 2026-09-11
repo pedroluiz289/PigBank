@@ -39,7 +39,7 @@ public class BancoController {
     @GetMapping("/corrente/dashboard")
     public String correnteDashboard(Model model) {
         model.addAttribute("usuario", corrente);
-        return "corrente/corrente";
+        return "corrente/dashboard";
     }
 
     @GetMapping("/corrente/editar")
