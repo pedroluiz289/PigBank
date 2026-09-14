@@ -1,6 +1,12 @@
 let tipoAtual = "todos";
 
-function aplicarFiltro(tipo) {
+function aplicarFiltro(tipo, elemento) {
+    document.querySelectorAll(".tag").forEach(
+        botao => botao.classList.remove("ativo")
+    );
+
+    elemento.classList.add("ativo");
+
     tipoAtual = tipo;
     filtrarTransacoes();
 }
@@ -11,6 +17,7 @@ function filtrarTransacoes() {
 
     transacao.forEach(item => {
         const tipo = item.querySelector("h4").innerText.toLowerCase();
+        const valorItem = item.querySelector("strong").innerText.toLowerCase();
         const valor = tipo.includes(campoValor);
         let filtroAchado = false;
 
@@ -22,10 +29,10 @@ function filtrarTransacoes() {
             filtroAchado = true;
         }
 
-        if (valor && filtroAchado) {
-            item.style.display = 'block';
+        if ((valor || valorItem.includes(campoValor)) && filtroAchado) {
+            item.style.display = "flex";
         } else {
-            item.style.display = 'none';
+            item.style.display = "none";
         }
     });
 }

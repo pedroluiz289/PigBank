@@ -1,8 +1,287 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios,download,search");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,arrow_back_ios,payment_arrow_down,download,receipt,search");
 
 :root {
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    
+    --cor-primaria: #F98FB4;
+
+    --cinza-900: #0f172a;
+    --cinza-700: #334155;
+    --cinza-600: #475569;
+    --cinza-500: #64748b;
+    --cinza-200: #e2e8f0;
+    --cinza-100: #f1f5f9;
+    --cinza-50: #f8fafc;
+
+    --cor-fundo: var(--cinza-50);
+
+    --cor-texto-voltar: var(--cinza-500);
+    --cor-texto-voltar-hover: var(--cinza-700);
+    --cor-texto-exportar: var(--cinza-500);
+    --cor-texto-exportar-hover: var(--cinza-700);
+    --cor-titulo: var(--cinza-900);
+
+    --cor-fundo-card: white;
+    --cor-borda-card: var(--cinza-200);
+    --cor-sombra-card: rgba(0, 0, 0, 0.05);
+    --cor-titulo-card: var(--cinza-500);
+    --cor-valor-entrada-card: #00A84E;
+    --cor-valor-saida-card: #E72F4B;
+    --cor-valor-total-card: #0284c7;
+
+    --cor-fundo-filtro-busca: white;
+    --cor-borda-filtro-busca: var(--cinza-200);
+    --cor-sombra-filtro-busca: rgba(0, 0, 0, 0.05);
+    --cor-icone-busca: #94a3b8;
+    --cor-borda-campo-busca: #cbd5e1;
+
+    --cor-fundo-tag-filtro: var(--cinza-100);
+    --cor-texto-tag-filtro: var(--cinza-600);
+    --cor-fundo-tag-filtro-ativo: var(--cor-primaria);
+    --cor-texto-tag-filtro-ativo: white;
+
+    --cor-fundo-icone-transacao-vazia: var(--cinza-100);
+    --cor-icone-transacao-vazia: var(--cinza-600);
+    --cor-titulo-transacao-vazia: var(--cinza-700);
+    --cor-texto-transacao-vazia: var(--cinza-500);
+
+    --cor-fundo-transacao: white;
+    --cor-borda-transacao: var(--cinza-200);
+    --cor-sombra-transacao: rgba(0, 0, 0, 0.05);
+    --cor-fundo-icone-transacao: var(--cinza-100);
+    --cor-icone-transacao: var(--cinza-600);
+    --cor-titulo-detalhes-transacao: var(--cinza-900);
+    --cor-texto-detalhes-transacao: var(--cinza-500);
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: var(--fonte);
+}
+
+.body-container {
+    background-color: var(--cor-fundo);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 725px;
+}
+
+.header-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.botao-voltar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cor-texto-voltar);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.botao-voltar:hover {
+    color: var(--cor-texto-voltar-hover);
+}
+
+.header-titulo {
+    text-align: center;
+    flex: 1;
+    color: var(--cor-titulo);
+    font-size: 26px;
+}
+
+#botao-exportar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cor-texto-exportar);
+    transition: color 0.2s ease;
+}
+
+#botao-exportar:hover {
+    color: var(--cor-texto-exportar-hover);
+}
+
+#resumo-financas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.card-resumo {
+    background-color: var(--cor-fundo-card);
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid var(--cor-borda-card);
+    box-shadow: 0px 2px 5px var(--cor-sombra-card);
+}
+
+.card-titulo {
+    color: var(--cor-titulo-card);
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.card-valor {
+    font-size: 20px;
+}
+
+.entrada {
+    color: var(--cor-valor-entrada-card);
+}
+
+.saida {
+    color: var(--cor-valor-saida-card);
+}
+
+.total {
+    color: var(--cor-valor-total-card);
+}
+
+#filtro-busca {
+    background-color: var(--cor-fundo-filtro-busca);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 24px;
+    border: 1px solid var(--cor-borda-filtro-busca);
+    box-shadow: 0px 2px 5px var(--cor-sombra-filtro-busca);
+}
+
+#container-busca {
+    position: relative;
+    width: 100%;
+}
+
+#icone-busca {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--cor-icone-busca);
+    font-size: 20px;
+}
+
+#campo-busca {
+    width: 100%;
+    padding: 10px 14px 10px 40px;
+    border: 1px solid var(--cor-borda-campo-busca);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+}
+
+#tags-filtro {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    margin-bottom: 4px;
+}
+
+.tag {
+    cursor: pointer;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: var(--cor-fundo-tag-filtro);
+    color: var(--cor-texto-tag-filtro);
+    transition: background-color 0.2s, color 0.2s ease;
+}
+
+.ativo {
+    background-color: var(--cor-fundo-tag-filtro-ativo);
+    color: var(--cor-texto-tag-filtro-ativo);
+}
+
+#transacao-vazia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 0px 12px 0px;
+}
+
+#transacao-vazia-icone {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--cor-fundo-icone-transacao-vazia);
+    color: var(--cor-icone-transacao-vazia);
+    margin-bottom: 5px;
+}
+
+#transacao-vazia-icone > span {
+    font-size: 36px;
+}
+
+#transacao-vazia-titulo {
+    font-size: 16px;
+    color: var(--cor-titulo-transacao-vazia);
+}
+
+#transacao-vazia-texto {
+    font-size: 14px;
+    color: var(--cor-texto-transacao-vazia);
+}
+
+.trasacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--cor-fundo-transacao);
+    border: 1px solid var(--cor-borda-transacao);
+    box-shadow: 0px 2px 5px var(--cor-sombra-transacao);
+    padding: 16px;
+    border-radius: 14px;
+    margin-bottom: 16px;
+}
+
+.informacoes-transacao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icone-trasacao {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: var(--cor-fundo-icone-transacao);
+    color: var(--cor-icone-transacao);
+}
+
+.detalhes-transacao h4 {
+    font-size: 16px;
+    color: var(--cor-titulo-detalhes-transacao);
+}
+
+.detalhes-transacao p {
+    font-size: 14px;
+    color: var(--cor-texto-detalhes-transacao);
 }

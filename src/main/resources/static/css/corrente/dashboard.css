@@ -151,7 +151,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: background-color 0.2s ease;
 }
 
 .acoes-botao:hover {
@@ -235,7 +235,7 @@ body {
     font-weight: 600;
     color: var(--cor-texto-item);
     box-shadow: 0px 1px 3px var(--cor-sombra-item);
-    transition: all 0.2s ease;
+    transition: box-shadow 0.2s, transform 0.2s ease;
 }
 
 .item-acao:hover {

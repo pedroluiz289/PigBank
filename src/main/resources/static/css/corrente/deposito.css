@@ -187,7 +187,7 @@ label {
     font-size: 32px;
     font-weight: bold;
     color: var(--cor-texto-placeholder-campo);
-    transition: all 0.2s ease;
+    transition: border-color 0.2s, box-shadow 0.2s ease;
 }
 
 .saldo-input:focus {
@@ -257,7 +257,7 @@ label {
     color: var(--cor-texto-botao-confirmacao);
     background-color: var(--cor-fundo-botao-confirmacao);
     gap: 6px;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s, box-shadow 0.2s ease;
 }
 
 #botao-deposito:hover {
