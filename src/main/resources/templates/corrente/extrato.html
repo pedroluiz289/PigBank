@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" th:href="@{/css/corrente/extrato.css}">
+    <link rel="stylesheet" th:href="@{/css/corrente/documento.css}">
     <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <script th:src="@{/js/corrente/extrato.js}" defer></script>
     <title>PigBank - Extrato</title>
@@ -17,7 +18,7 @@
                     <span>Voltar</span>
                 </a>
                 <h1 class="header-titulo">Extrato da Conta</h1>
-                <button id="botao-exportar" type="button">
+                <button id="botao-exportar" type="button" onclick="gerarPDF()">
                     <span class="material-symbols-outlined">download</span>
                     <span>Exportar</span>
                 </button>
@@ -74,5 +75,52 @@
             </th:block>
         </section>
     </main>
+    <section id="pagina-documento-main">
+        <div id="documento-header">
+            <div id="logo">
+                <span id="icone-logo" class="material-symbols-outlined">savings</span>
+                <h1 id="titulo-programa">PigBank</h1>
+            </div>
+            <div id="titulo-documento-container">
+                <h2 id="titulo-documento">Extrato Bancário</h2>
+                <p id="data-emissao">Emissão: 13/09/2026 às 14:34:26</p>
+            </div>
+        </div>
+        <div id="resumo-financias">
+            <div class="resumo">
+                <h3 class="resumo-titulo">Total Entradas</h3>
+                <strong class="resumo-valor resumo-entrada" th:text="'+ R$ ' + ${#numbers.formatDecimal(usuario.entradas, 1, 2)}">R$0,00</strong>
+            </div>
+            <div class="resumo">
+                <h3 class="resumo-titulo">Total Saídas</h3>
+                <strong class="resumo-valor resumo-saida" th:text="'- R$ ' + ${#numbers.formatDecimal(usuario.saidas, 1, 2)}">R$0,00</strong>
+            </div>
+            <div class="resumo">
+                <h3 class="resumo-titulo">Saldo Final</h3>
+                <strong class="resumo-valor resumo-total" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}">R$0,00</strong>
+            </div>
+        </div>
+        <table id="tabela-transacoes">
+            <thead id="tabela-header">
+                <tr>
+                    <th>Data</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody id="tabela-body">
+                <tr th:each="t, quantidade: ${usuario.transacao}">
+                    <td th:text="${@dateUtils.tempoNormal(t.data)}">00/00/0000</td>
+                    <td class="transacao-titulo" th:text="${t.tipo}">Placeholder</td>
+                    <td class="saque">
+                        <strong th:classappend="${t.tipo == 'Deposito'} ? 'entrada' : 'saida'" th:text="${t.tipo == 'Deposito'} ? '+ R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)} : '- R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)}">R$ 0,00</strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="aviso">
+            <p>Este documento foi exportado em um projeto de <strong>demonstração</strong>. Todos os dados apresentados são totalmente <strong>fictícios</strong> e não possuem <strong>valor financeiro real</strong>.</p>
+        </div>
+    </section>
 </body>
 </html>

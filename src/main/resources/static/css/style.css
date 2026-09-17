@@ -19,6 +19,10 @@
     --cor-fundo-botao: #f8fafc;
     --cor-borda-botao-ativo: var(--cor-primaria);
     --cor-sombra-botao-ativo: rgba(252, 187, 209, 0.5);
+
+    --cor-fundo-aviso: #FEF3C7;
+    --cor-borda-aviso: #FCD34D;
+    --cor-texto-aviso: #92400E;
 }
 
 * {
@@ -102,4 +106,14 @@
 
 .setas {
     font-size: 20px;
+}
+
+#aviso {
+    background-color: var(--cor-fundo-aviso);
+    border: 2px solid var(--cor-borda-aviso);
+    color: var(--cor-texto-aviso);
+    padding: 10px;
+    font-size: 13px;
+    border-radius: 10px;
+    margin-top: 16px;
 }

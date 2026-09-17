@@ -36,3 +36,13 @@ function filtrarTransacoes() {
         }
     });
 }
+
+function gerarPDF() {
+    const agora = new Date();
+    const data = agora.toLocaleDateString("pt-BR");
+    const hora = agora.toLocaleTimeString("pt-BR", {hour: "2-digit", minute: "2-digit"});
+    const dataEmissao = document.getElementById("data-emissao");
+
+    dataEmissao.innerText = `Emitido em ${data} às ${hora}`;
+    window.print();
+}

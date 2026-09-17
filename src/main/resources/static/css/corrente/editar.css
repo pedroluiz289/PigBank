@@ -3,6 +3,21 @@
 
 :root {
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    --cinza-900: #0f172a;
+    --cinza-700: #334155;
+    --cinza-600: #475569;
+    --cinza-500: #64748b;
+    --cinza-300: #C4CAD2;
+    --cinza-200: #e2e8f0;
+    --cinza-100: #f1f5f9;
+    --cinza-50: #f8fafc;
+
+    --cor-fundo: var(--cinza-50);
+
+    --cor-texto-voltar: var(--cinza-500);
+    --cor-texto-voltar-hover: var(--cinza-700);
+    --cor-titulo: var(--cinza-900);
 }
 
 * {
@@ -13,5 +28,42 @@
 }
 
 .body-container {
+    background-color: var(--cor-fundo);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+}
 
+.main-container {
+    width: 100%;
+    max-width: 725px;
+}
+
+.header-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.botao-voltar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cor-texto-voltar);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.botao-voltar:hover {
+    color: var(--cor-texto-voltar-hover);
+}
+
+.header-titulo {
+    text-align: center;
+    flex: 1;
+    color: var(--cor-titulo);
+    font-size: 26px;
 }

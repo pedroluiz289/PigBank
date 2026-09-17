@@ -1,0 +1,21 @@
+@media print {
+    main {
+        display: none;
+    }
+
+    #pagina-documento-main {
+        display: block;
+    }
+
+    @page {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    body {
+        padding-top: 72px;
+        padding-bottom: 72px;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}

@@ -61,9 +61,10 @@ public class BancoController {
     }
 
     @PostMapping("/corrente/salvardeposito")
-    public String correnteSalvarDeposito(@ModelAttribute("usuario") Corrente form) {
+    public String correnteSalvarDeposito(@ModelAttribute("usuario") Corrente form, Model model) {
         corrente.depositar(form.getSaldo());
-        return "redirect:/corrente/dashboard";
+        model.addAttribute("sucesso", "O deposito de R$" + form.getSaldo() + " foi realizado com sucesso!");
+        return "redirect:/corrente/deposito";
     }
 
     @GetMapping("/corrente/saque")

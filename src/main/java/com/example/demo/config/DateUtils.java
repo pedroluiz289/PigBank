@@ -1,6 +1,7 @@
 package com.example.demo.config;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import org.ocpsoft.prettytime.PrettyTime;
@@ -20,5 +21,10 @@ public class DateUtils {
         } catch (Exception e) {
             return data.toString();
         }
+    }
+
+    public String tempoNormal(LocalDateTime data) {
+        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yy");
+        return data.format(formatador);
     }
 }
