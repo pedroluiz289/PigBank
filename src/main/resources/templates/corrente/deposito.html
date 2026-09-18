@@ -61,9 +61,12 @@
                 </div>
             </form>
         </section>
-        <div th:if="${sucesso}" class="alert alert-success" role="alert">
-            <span th:text="${sucesso}">Mensagem de sucesso padrão (será substituída)</span>
-        </div>
+        <th:block th:if="${sucesso}">
+            <dialog id="notificacao">
+                <span id="icone-notificacao" class="material-symbols-outlined">check</span>
+                <p>O deposito foi realizado com sucesso!</p>
+            </dialog>
+        </th:block>
     </main>
 </body>
 </html>

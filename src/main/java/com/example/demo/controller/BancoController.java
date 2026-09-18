@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 
 import com.example.demo.models.Corrente;
@@ -61,9 +62,10 @@ public class BancoController {
     }
 
     @PostMapping("/corrente/salvardeposito")
-    public String correnteSalvarDeposito(@ModelAttribute("usuario") Corrente form, Model model) {
+    public String correnteSalvarDeposito(@ModelAttribute("usuario") Corrente form, RedirectAttributes redirectAttributes) {
         corrente.depositar(form.getSaldo());
-        model.addAttribute("sucesso", "O deposito de R$" + form.getSaldo() + " foi realizado com sucesso!");
+
+        redirectAttributes.addFlashAttribute("sucesso", "");
         return "redirect:/corrente/deposito";
     }
 

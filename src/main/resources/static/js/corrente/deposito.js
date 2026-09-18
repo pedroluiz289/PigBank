@@ -35,6 +35,22 @@ function mostrarSaldo(botao) {
     }
 }
 
+function mostrarNotificacao() {
+    const notificacao = document.getElementById("notificacao");
+
+    if (notificacao) {
+        notificacao.show();
+    
+        setTimeout(() => {
+            notificacao.classList.add("notificacao-fechar");
+            notificacao.addEventListener('animationend', function() {
+                notificacao.close();
+                notificacao.classList.remove("notificacao-fechar");
+            }, {once: true});
+        }, 5000);
+    }
+}
+
 window.addEventListener('DOMContentLoaded', () => {
     const botaoSaldo = document.querySelector('[data-saldo]');
     const saldoValor = document.getElementById("saldo-valor");
@@ -48,4 +64,6 @@ window.addEventListener('DOMContentLoaded', () => {
         saldoValor.innerText = Number(valor).toFixed(2).replace(".", ",");
         icone.innerText = "visibility";
     }
+
+    mostrarNotificacao()
 });
