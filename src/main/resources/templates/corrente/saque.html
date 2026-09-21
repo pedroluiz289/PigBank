@@ -19,17 +19,37 @@
                 <h1 class="header-titulo">Saque</h1>
                 <div style="width: 80px;"></div>
             </div>
-            <div class="header-saldo">
-                <div>
-                    <p id="header-saldo-titulo">Saldo Atual</p>
-                    <div id="saldo-valor-container">
-                        <span class="header-valor">R$</span>
-                        <strong id="saldo-valor" th:text="${#numbers.formatDecimal(usuario.saldo, 1, 2)}" class="header-valor">0.00</strong>
-                    </div>
+            <div id="resumo-saldo">
+                <div id="header-saldo">
+                    <h4>Saldos Disponíveis</h4>
+                    <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" th:data-limite="${usuario.getLimiteDisponivel}" type="button" onclick="mostrarSaldo(this)">
+                        <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
+                        <span id="texto-icone">Ocultar</span>
+                    </button>
                 </div>
-                <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" type="button" onclick="mostrarSaldo(this)">
-                    <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
-                </button>
+                <div class="containers">
+                    <p class="container-titulo">
+                        <span class="material-symbols-outlined container-icone">account_balance_wallet</span>
+                        <span>Saldo Disponivel</span>
+                    </p>
+                    <strong id="valor-saldo-disponivel" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}">R$ 0,00</strong>
+                </div>
+                <div class="containers">
+                    <p class="container-titulo">
+                        <span class="material-symbols-outlined container-icone">credit_score</span>
+                        <span>Limite Disponivel</span>
+                    </p>
+                    <strong id="valor-limite-disponivel" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel, 1, 2)}">R$ 0,00</strong>
+                </div>
+                <div id="ultimo-container" class="containers">
+                    <p class="container-titulo">Saldo total para o Saque</p>
+                    <th:block th:if="${usuario.saldo > 0}">
+                        <strong id="valor-total" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel + usuario.saldo, 1, 2)}">R$ 0,00</strong>
+                    </th:block>
+                    <th:block th:unless="${usuario.saldo > 0}">
+                        <strong id="valor-total" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel, 1, 2)}">R$ 0,00</strong>
+                    </th:block>
+                </div>
             </div>
         </header>
         <section class="card">
@@ -61,6 +81,18 @@
                 </div>
             </form>
         </section>
+        <th:block th:if="${sucesso}">
+            <dialog id="notificacao" class="notificacao-sucesso">
+                <span id="icone-notificacao" class="material-symbols-outlined icone-notificacao-sucesso">check</span>
+                <p>O saque foi realizado com sucesso!</p>
+            </dialog>
+        </th:block>
+        <th:block th:if="${erro}">
+            <dialog id="notificacao" class="notificacao-erro">
+                <span id="icone-notificacao" class="material-symbols-outlined icone-notificacao-erro">close</span>
+                <p>O valor do deposito não pode ser igual a <strong>R$0,00</strong></p>
+            </dialog>
+        </th:block>
     </main>
 </body>
 </html>

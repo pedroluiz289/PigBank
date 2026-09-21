@@ -62,9 +62,15 @@
             </form>
         </section>
         <th:block th:if="${sucesso}">
-            <dialog id="notificacao">
-                <span id="icone-notificacao" class="material-symbols-outlined">check</span>
+            <dialog id="notificacao" class="notificacao-sucesso">
+                <span id="icone-notificacao" class="material-symbols-outlined icone-notificacao-sucesso">check</span>
                 <p>O deposito foi realizado com sucesso!</p>
+            </dialog>
+        </th:block>
+        <th:block th:if="${erro}">
+            <dialog id="notificacao" class="notificacao-erro">
+                <span id="icone-notificacao" class="material-symbols-outlined icone-notificacao-erro">close</span>
+                <p>O valor do deposito não pode ser igual a <strong>R$0,00</strong></p>
             </dialog>
         </th:block>
     </main>
