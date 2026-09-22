@@ -1,5 +1,5 @@
 const saldoInput = document.getElementById("saldo");
-let visivel = localStorage.getItem('saldoVisivel') !== 'false';
+let visivel = localStorage.getItem("saldoVisivel") !== "false";
 
 function adicionarValor(valor) {
     let formato = saldoInput.value.replace(",", ".");
@@ -7,6 +7,33 @@ function adicionarValor(valor) {
     let resultado = valorAtual + parseFloat(valor);
 
     saldoInput.value = resultado.toFixed(2).replace(".", ",");
+}
+
+function validarSaque() {
+    const valor = document.getElementById("saldo").value;
+
+    if (valor <= 0) {
+        alert("O valor tem que ser maior de R$ 0,00");
+        return false;
+    }
+
+    return true;
+}
+
+function mostrarNotificacao() {
+    const notificacao = document.getElementById("notificacao");
+
+    if (notificacao) {
+        notificacao.show();
+    
+        setTimeout(() => {
+            notificacao.classList.add("notificacao-fechar");
+            notificacao.addEventListener('animationend', function() {
+                notificacao.close();
+                notificacao.classList.remove("notificacao-fechar");
+            }, {once: true});
+        }, 5000);
+    }
 }
 
 saldoInput.addEventListener("keypress", function (evento) {
@@ -45,46 +72,44 @@ function mostrarSaldo(botao) {
     const icone = document.getElementById("mostrar-saldo-icone");
     const textoIcone = document.getElementById("texto-icone");
 
-    if (visivel) {
+    if (!visivel) {
         valorSaldo.innerText = "••••••••";
         valorLimite.innerText = "••••••••";
         valorTotal.innerText = "••••••••";
         icone.innerText = "visibility_off";
         textoIcone.innerText = "Mostrar";
-
-        visivel = false;
-        localStorage.setItem('saldoVisivel', false);
     } else {
         valorSaldo.innerText = "R$ " + Number(valor).toFixed(2).replace(".", ",");
         valorLimite.innerText = "R$ " + Number(limite).toFixed(2).replace(".", ",");
 
         if (valor > 0) {
-            valorTotal.innerText = "R$ " + Number(valor + limite).toFixed(2).replace(".", ",");
+            const total = Number(valor) + Number(limite);
+            valorTotal.innerText = "R$ " + total.toFixed(2).replace(".", ",");
         } else {
             valorTotal.innerText = "R$ " + Number(limite).toFixed(2).replace(".", ",");
         }
 
         icone.innerText = "visibility";
         textoIcone.innerText = "Ocultar";
-
-        visivel = true;
-        localStorage.setItem('saldoVisivel', true);
     }
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-    /*const botaoSaldo = document.querySelector('[data-saldo]');
-    const saldoValor = document.getElementById("saldo-valor");
-    const icone = document.getElementById("mostrar-saldo-icone");
+function alterarEstado(botao) {
+    visivel = !visivel;
+    localStorage.setItem("saldoVisivel", visivel);
+    mostrarSaldo(botao);
+}
 
-    if (!visivel && botaoSaldo) {
-        saldoValor.innerText = "*****";
-        icone.innerText = "visibility_off";
-    } else if (botaoSaldo) {
-        const valor = botaoSaldo.dataset.saldo;
-        saldoValor.innerText = "R$ " + Number(valor).toFixed(2).replace(".", ",");
-        icone.innerText = "visibility";
-    }*/
+window.addEventListener("DOMContentLoaded", () => {
     const botaoSaldo = document.getElementById("botao-mostrar-saldo");
-    mostrarSaldo(botaoSaldo);
+
+    if (botaoSaldo) {
+        mostrarSaldo(botaoSaldo);
+
+        botaoSaldo.addEventListener("click", () => {
+            alterarEstado(botaoSaldo);
+        });
+    }
+
+    mostrarNotificacao();
 });

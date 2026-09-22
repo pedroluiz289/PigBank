@@ -65,5 +65,5 @@ window.addEventListener('DOMContentLoaded', () => {
         icone.innerText = "visibility";
     }
 
-    mostrarNotificacao()
+    mostrarNotificacao();
 });

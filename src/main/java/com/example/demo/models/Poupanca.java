@@ -11,7 +11,7 @@ public class Poupanca extends ContaBancaria {
     }
 
     @Override
-    public void sacar(double valor) {
-
+    public boolean sacar(double valor) {
+        return false;
     }
 }

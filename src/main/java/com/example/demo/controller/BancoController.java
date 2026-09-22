@@ -63,8 +63,7 @@ public class BancoController {
 
     @PostMapping("/corrente/salvardeposito")
     public String correnteSalvarDeposito(@ModelAttribute("usuario") Corrente form, RedirectAttributes redirectAttributes) {
-        if (form.getSaldo() != 0) {
-            corrente.depositar(form.getSaldo());
+        if (corrente.depositar(form.getSaldo())) {
             redirectAttributes.addFlashAttribute("sucesso", "");
         } else {
             redirectAttributes.addFlashAttribute("erro", "");
@@ -80,8 +79,13 @@ public class BancoController {
     }
 
     @PostMapping("/corrente/sacar")
-    public String correnteSacar(@ModelAttribute("usuario") Corrente form) {
-        corrente.sacar(form.getSaldo());
+    public String correnteSacar(@ModelAttribute("usuario") Corrente form, RedirectAttributes redirectAttributes) {
+        if (corrente.sacar(form.getSaldo())) {
+            redirectAttributes.addFlashAttribute("sucesso", "");
+        } else {
+            redirectAttributes.addFlashAttribute("erro", "");
+        }
+
         return "redirect:/corrente/saque";
     }
 

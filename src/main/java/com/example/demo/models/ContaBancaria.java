@@ -21,9 +21,9 @@ abstract class ContaBancaria {
         this.saidas = saidas;
     }
 
-    public abstract void depositar(double valor);
+    public abstract boolean depositar(double valor);
 
-    public abstract void sacar(double valor);
+    public abstract boolean sacar(double valor);
 
     public void setNome(String nome) {
         this.nome = nome;
