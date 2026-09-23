@@ -33,7 +33,7 @@
             <section id="saldo-container">
                 <div id="saldo-cabecalho">
                     <p id="saldo-titulo">Saldo disponível</p>
-                    <button id="botao-mostrar-saldo" th:data-limite="${usuario.getLimiteDisponivel()}" th:data-saldo="${usuario.saldo}" onclick="mostrarSaldo(this)">
+                    <button id="botao-mostrar-saldo" th:data-limite="${usuario.getLimiteDisponivel()}" th:data-saldo="${usuario.saldo}">
                         <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
                         <span id="texto-icone">Ocultar</span>
                     </button>

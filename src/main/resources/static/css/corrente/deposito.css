@@ -46,8 +46,8 @@
     --cor-texto-saldo: white;
     --cor-sombra-fundo-saldo: rgba(249, 143, 180, 0.5);
 
-    --cor-icone-mostrar-saldo: white;
-    --cor-fundo-mostrar-saldo: rgba(255, 255, 255, 0.3);
+    --cor-icone-mostrar-saldo: var(--cinza-600);
+    --cor-fundo-mostrar-saldo: white;
 
     --cor-fundo-card: white;
     --cor-sombra-card: rgba(0, 0, 0, 0.1);
@@ -161,8 +161,11 @@
 
 #botao-mostrar-saldo {
     border: none;
-    padding: 6px;
-    border-radius: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+    gap: 6px;
     cursor: pointer;
     display: flex;
     align-items: center;
