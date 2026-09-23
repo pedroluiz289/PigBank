@@ -83,6 +83,7 @@
             </div>
             <div id="titulo-documento-container">
                 <h2 id="titulo-documento">Extrato Bancário</h2>
+                <p id="titular" th:text="'Titular: ' + ${usuario.nome}"></p>
                 <p id="data-emissao">Emissão: 13/09/2026 às 14:34:26</p>
             </div>
         </div>
@@ -100,24 +101,35 @@
                 <strong class="resumo-valor resumo-total" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}">R$0,00</strong>
             </div>
         </div>
-        <table id="tabela-transacoes">
-            <thead id="tabela-header">
-                <tr>
-                    <th>Data</th>
-                    <th>Categoria</th>
-                    <th>Valor</th>
-                </tr>
-            </thead>
-            <tbody id="tabela-body">
-                <tr th:each="t, quantidade: ${usuario.transacao}">
-                    <td th:text="${@dateUtils.tempoNormal(t.data)}">00/00/0000</td>
-                    <td class="transacao-titulo" th:text="${t.tipo}">Placeholder</td>
-                    <td class="saque">
-                        <strong th:classappend="${t.tipo == 'Deposito'} ? 'entrada' : 'saida'" th:text="${t.tipo == 'Deposito'} ? '+ R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)} : '- R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)}">R$ 0,00</strong>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <th:block th:if="${!#lists.isEmpty(usuario.transacao)}">
+            <table id="tabela-transacoes">
+                <thead id="tabela-header">
+                    <tr>
+                        <th>Data</th>
+                        <th>Categoria</th>
+                        <th>Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-body">
+                    <tr th:each="t, quantidade: ${usuario.transacao}">
+                        <td th:text="${@dateUtils.tempoNormal(t.data)}">00/00/0000</td>
+                        <td class="transacao-titulo" th:text="${t.tipo}">Placeholder</td>
+                        <td class="saque">
+                            <strong th:classappend="${t.tipo == 'Deposito'} ? 'entrada' : 'saida'" th:text="${t.tipo == 'Deposito'} ? '+ R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)} : '- R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)}">R$ 0,00</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </th:block>
+        <th:block th:unless="${!#lists.isEmpty(usuario.transacao)}">
+            <div id="transacao-vazia">
+                <div id="transacao-vazia-icone">
+                    <span class="material-symbols-outlined">receipt</span>
+                </div>
+                <h3 id="transacao-vazia-titulo">Nenhuma movimentação ainda</h3>
+                <p id="transacao-vazia-texto">Você ainda não realizou transações nesta conta.</p>
+            </div>
+        </th:block>
         <div id="aviso">
             <p>Este documento foi exportado em um projeto de <strong>demonstração</strong>. Todos os dados apresentados são totalmente <strong>fictícios</strong> e não possuem <strong>valor financeiro real</strong>.</p>
         </div>

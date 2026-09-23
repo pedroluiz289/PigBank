@@ -61,6 +61,7 @@
 
     --cor-titulo-documento: var(--cinza-900);
     --cor-data-emissao-documento: var(--cinza-500);
+    --cor-titular-documento: var(--cinza-500);
 
     --cor-borda-resumo: #cbd5e1;
     --cor-titulo-resumo: var(--cinza-500);
@@ -336,12 +337,12 @@
 }
 
 #logo > span {
-    font-size: 42px;
+    font-size: 55px;
     color: var(--cor-icone-programa);
 }
 
 #titulo-programa {
-    font-size: 32px;
+    font-size: 45px;
     color: var(--cor-titulo-programa);
 }
 
@@ -354,10 +355,16 @@
     color: var(--cor-titulo-documento);
 }
 
-#data-emissao {
+#titular {
     font-size: 13px;
     margin-top: 2px;
     color: var(--cor-data-emissao-documento);
+}
+
+#data-emissao {
+    font-size: 13px;
+    margin-top: 2px;
+    color: var(--cor-titular-documento);
 }
 
 #resumo-financias {
