@@ -6,8 +6,8 @@ public class Poupanca extends ContaBancaria {
     }
 
     @Override
-    public void depositar(double valor) {
-
+    public boolean depositar(double valor) {
+        return false;
     }
 
     @Override

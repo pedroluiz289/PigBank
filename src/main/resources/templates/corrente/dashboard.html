@@ -33,20 +33,18 @@
             <section id="saldo-container">
                 <div id="saldo-cabecalho">
                     <p id="saldo-titulo">Saldo disponível</p>
-                    <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" onclick="mostrarSaldo(this)">
+                    <button id="botao-mostrar-saldo" th:data-limite="${usuario.getLimiteDisponivel()}" th:data-saldo="${usuario.saldo}" onclick="mostrarSaldo(this)">
                         <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
-                        <span>Ocultar</span>
+                        <span id="texto-icone">Ocultar</span>
                     </button>
                 </div>
                 <div id="saldo-valor-container">
-                    <span>R$</span>
-                    <p th:text="${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="saldo-valor">0.00</p>
+                    <p th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" id="saldo-valor">0.00</p>
                 </div>
-                <div id="saldo-linha"></div>
                 <div id="saldo-detalhes">
                     <div class="detalhes-item">
                         <p class="detalhes-titulo">Limite Disponivel</p>
-                        <strong th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel, 1, 2)}">R$ 0.00</strong>
+                        <strong id="valor-limite-disponivel" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel, 1, 2)}">R$ 0.00</strong>
                     </div>
                 </div>
             </section>
