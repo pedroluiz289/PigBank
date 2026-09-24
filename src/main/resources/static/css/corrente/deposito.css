@@ -146,14 +146,6 @@
     font-size: 13px;
 }
 
-#saldo-valor-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: bold;
-    font-size: 40px;
-}
-
 .header-valor {
     font-size: 24px;
 }

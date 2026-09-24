@@ -1,5 +1,5 @@
 const saldoInput = document.getElementById("saldo");
-let visivel = localStorage.getItem('saldoVisivel') !== 'false';
+let visivel = localStorage.getItem("saldoVisivel") !== "false";
 
 function adicionarValor(valor) {
     let formato = saldoInput.value.replace(",", ".");
@@ -27,7 +27,7 @@ function mostrarSaldo(botao) {
         icone.innerText = "visibility_off";
         textoIcone.innerText = "Mostrar";
     } else {
-        saldoValor.innerText = Number(valor).toFixed(2).replace(".", ",");
+        saldoValor.innerText = "R$ " + Number(valor).toFixed(2).replace(".", ",");
         icone.innerText = "visibility";
         textoIcone.innerText = "Ocultar";
     }
@@ -41,7 +41,7 @@ function mostrarNotificacao() {
     
         setTimeout(() => {
             notificacao.classList.add("notificacao-fechar");
-            notificacao.addEventListener('animationend', function() {
+            notificacao.addEventListener("animationend", function() {
                 notificacao.close();
                 notificacao.classList.remove("notificacao-fechar");
             }, {once: true});
