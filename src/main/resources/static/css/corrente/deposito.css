@@ -41,8 +41,7 @@
     --cor-texto-voltar-hover: var(--cinza-700);
     --cor-titulo: var(--cinza-900);
 
-    --cor-fundo-saldo1: var(--cor-segundaria);
-    --cor-fundo-saldo2: var(--cor-primaria);
+    --cor-fundo-saldo: var(--cor-primaria);
     --cor-texto-saldo: white;
     --cor-sombra-fundo-saldo: rgba(249, 143, 180, 0.5);
 
@@ -132,7 +131,7 @@
 }
 
 .header-saldo {
-    background-image: linear-gradient(135deg, var(--cor-fundo-saldo2) 0%, var(--cor-fundo-saldo1) 100%);
+    background-color: var(--cor-fundo-saldo);
     color: var(--cor-texto-saldo);
     padding: 20px 24px;
     border-radius: 16px;
