@@ -16,13 +16,30 @@
                     <span>Voltar</span>
                 </a>
                 <h1 class="header-titulo">Editar Perfil</h1>
+                <div style="width: 80px;"></div>
             </div>
         </header>
-        <form th:action="@{/corrente/salvar}" method="post" th:object="${usuario}">
-            <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nome-input" th:field="*{nome}">
-    
-            <button type="submit">Atualizar</button>
+        <form id="card-principal" th:action="@{/corrente/salvar}" method="post" th:object="${usuario}">
+            <div id="grid-elementos">
+                <div class="elemento">
+                    <label class="nome-elemento" for="nome">Nome Completo</label>
+                    <div class="container-input">
+                        <span class="material-symbols-outlined icone-elemento">person</span>
+                        <input class="input-elemento" type="text" name="nome" id="nome-input" th:field="*{nome}">
+                    </div>
+                </div>
+                <div class="elemento">
+                    <label class="nome-elemento" for="agencia">Agência e Conta</label>
+                    <div class="container-input">
+                        <span class="material-symbols-outlined icone-elemento">account_balance</span>
+                        <input class="input-elemento" type="text" name="agencia" id="nome-input" th:field="*{nome}" disabled>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="botao-container">
+                <button id="botao-salvar" type="submit">Salvar Alterações</button>
+            </div>
         </form>
     </main>
 </body>
