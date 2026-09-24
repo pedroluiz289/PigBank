@@ -306,7 +306,7 @@ body {
 }
 
 .transacao-linha {
-    border-bottom: 2px dashed var(--cor-linha-item-extrato);
+    border-bottom: 1px solid var(--cor-linha-item-extrato);
 }
 
 .informacoes-transacao {
