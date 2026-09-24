@@ -1,11 +1,17 @@
 package com.example.demo.models;
 
+import java.util.Random;
+
 import org.springframework.format.annotation.NumberFormat;
 
 abstract class ContaBancaria {
+    private Random random = new Random();
+
     private String nome;
+    private String conta;
     private double entradas;
     private double saidas;
+    private int agencia;
     
     @NumberFormat(pattern = "#,##0.00")
     private double saldo;
@@ -19,6 +25,8 @@ abstract class ContaBancaria {
         this.saldo = saldo;
         this.entradas = entradas;
         this.saidas = saidas;
+        this.agencia = 0001;
+        this.conta = String.format("%07d-%d", random.nextInt(0, 10000000), random.nextInt(0, 10));
     }
 
     public abstract boolean depositar(double valor);
@@ -55,5 +63,13 @@ abstract class ContaBancaria {
 
     public double getSaldo() {
         return this.saldo;
+    }
+
+    public String getConta() {
+        return this.conta;
+    }
+
+    public int getAgencia() {
+        return this.agencia;
     }
 }
