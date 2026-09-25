@@ -6,71 +6,69 @@
 
   --cor-primaria: #F98FB4;
   --cor-segundaria: #FCBBD1; 
-  --cor-terciaria: #1e293b;
   --cor-quaternaria: #F76496;
 
-  --_cinza-900: #0f172a;
-  --_cinza-700: #334155;
-  --_cinza-600: #475569;
-  --_cinza-500: #64748b;
+  --cinza-900: #0f172a;
+  --cinza-700: #334155;
+  --cinza-600: #475569;
+  --cinza-500: #64748b;
   --cinza-300: #C4CAD2;
-  --_cinza-200: #e2e8f0;
-  --_cinza-100: #f1f5f9;
-  --_cinza-50: #f8fafc;
+  --cinza-200: #e2e8f0;
+  --cinza-100: #f1f5f9;
+  --cinza-50: #f8fafc;
 
-  --cor-fundo: var(--_cinza-50);
-  --cor-texto-geral: var(--cor-terciaria);
+  --cor-fundo: var(--cinza-50);
   --cor-fundo-cabecalho: white;
   --cor-sombra-cabecalho: rgba(0, 0, 0, 0.1);
 
   --cor-fundo-avatar: var(--cor-primaria);
   --cor-avatar: white;
 
-  --cor-nome-usuario: var(--_cinza-900);
-  --cor-saudacoes-texto: var(--_cinza-500);
+  --cor-nome-usuario: var(--cinza-900);
+  --cor-saudacoes-texto: var(--cinza-500);
 
-  --cor-botao-acoes-fundo: var(--_cinza-100);
-  --cor-botao-acoes-fundo-hover: var(--_cinza-200);
-  --cor-botao-acoes: var(--_cinza-600);
-  --cor-texto-acao-rapida: var(--_cinza-700);
+  --cor-botao-acoes-fundo: var(--cinza-100);
+  --cor-botao-acoes-fundo-hover: var(--cinza-200);
+  --cor-botao-acoes: var(--cinza-600);
+  --cor-texto-acao-rapida: var(--cinza-700);
 
   --cor-fundo-saldo1: var(--cor-segundaria);
   --cor-fundo-saldo2: var(--cor-primaria);
   --cor-texto-saldo: white;
   --cor-sombra-fundo-saldo: rgba(249, 143, 180, 0.5);
   
-  --cor-icone-mostrar-saldo: var(--_cinza-600);
+  --cor-icone-mostrar-saldo: var(--cinza-600);
   --cor-fundo-mostrar-saldo: white;
   --cor-linha-mostrar-saldo: rgba(255, 255, 255, 0.15);
 
   --cor-fundo-item: white;
-  --cor-texto-item: var(--_cinza-700);
+  --cor-texto-item: var(--cinza-700);
   --cor-sombra-item: rgba(0, 0, 0, 0.1);
   --cor-sombra-item-hover: rgba(0, 0, 0, 0.13);
-  --cor-fundo-icone-item: var(--_cinza-100);
-  --cor-borda-icone-item: var(--_cinza-200);
+  --cor-fundo-icone-item: var(--cinza-100);
+  --cor-borda-icone-item: var(--cinza-200);
   --cor-borda-icone-item-hover: var(--cinza-300);
-  --cor-fundo-icone-item-hover: var(--_cinza-200);
-  --cor-icone-item: var(--_cinza-500);
+  --cor-fundo-icone-item-hover: var(--cinza-200);
+  --cor-icone-item: var(--cinza-500);
 
   --cor-fundo-extrato: white;
   --cor-sombra-fundo-extrato: rgba(0, 0, 0, 0.1);
-  --cor-titulo-extrato: var(--_cinza-900);
+  --cor-titulo-extrato: var(--cinza-900);
   --cor-texto-extrato-completo: var(--cor-quaternaria); 
 
   --cor-titulo-detalhes-extrato: #1e293b;
   --cor-texto-detalhes-extrato: #94a3b8;
 
-  --cor-fundo-icone-extrato: var(--_cinza-100);
-  --cor-icone-extrato: var(--_cinza-600);
+  --cor-fundo-icone-extrato: var(--cinza-100);
+  --cor-icone-extrato: var(--cinza-600);
 
-  --cor-fundo-icone-transacao-vazia: var(--_cinza-100);
-  --cor-icone-transacao-vazia: var(--_cinza-600);
+  --cor-fundo-icone-transacao-vazia: var(--cinza-100);
+  --cor-icone-transacao-vazia: var(--cinza-600);
 
-  --cor-titulo-transacao-vazia: var(--_cinza-700);
-  --cor-texto-transacao-vazia: var(--_cinza-500);
+  --cor-titulo-transacao-vazia: var(--cinza-700);
+  --cor-texto-transacao-vazia: var(--cinza-500);
 
-  --cor-linha-item-extrato: var(--_cinza-200);
+  --cor-linha-item-extrato: var(--cinza-200);
 
   --cor-valor-deposito-extrato: #00A84E;
   --cor-valor-saque-extrato: #E72F4B;
@@ -86,7 +84,6 @@
 body {
     background-color: var(--cor-fundo);
     min-height: 100vh;
-    color: var(--cor-texto-geral);
     display: flex;
     justify-content: center;
 }
