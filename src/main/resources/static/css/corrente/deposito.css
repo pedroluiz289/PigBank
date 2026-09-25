@@ -55,18 +55,18 @@
 
     --cor-simbolo-saldo: var(--cinza-300);
     --cor-borda-campo-saldo: var(--cinza-200);
-    --cor-borda-campo-saldo-focus: #F98FB4;
+    --cor-borda-campo-saldo-focus: var(--cor-primaria);
     --cor-texto-placeholder-campo: var(--cinza-600);
 
     --cor-fundo-acao-rapida: white;
     --cor-texto-acao-rapida: var(--cinza-600);
     --cor-borda-acao-rapida: var(--cinza-200);
-    --cor-borda-acao-rapida-hover: #F98FB4;
+    --cor-borda-acao-rapida-hover: var(--cor-primaria);
 
     --cor-fundo-botao-limpar: white;
     --cor-texto-botao-limpar: var(--cinza-600);
     --cor-borda-botao-limpar: var(--cinza-200);
-    --cor-borda-botao-limpar-hover: #F98FB4;
+    --cor-borda-botao-limpar-hover: var(--cor-primaria);
 
     --cor-fundo-botao-confirmacao: var(--cor-primaria);
     --cor-texto-botao-confirmacao: white;

@@ -206,10 +206,6 @@
     font-size: 13px;
 }
 
-#header-limite-titulo {
-
-}
-
 #saldo-valor-container {
     display: flex;
     align-items: center;
@@ -218,16 +214,8 @@
     font-size: 40px;
 }
 
-#limite-valor-container {
-
-}
-
 .header-valor {
     font-size: 24px;
-}
-
-#header-valor-limite {
-
 }
 
 .card {

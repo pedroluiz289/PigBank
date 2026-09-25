@@ -4,7 +4,7 @@
 :root {
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    --cor-primaria: #FCBBD1;
+    --cor-primaria: #F98FB4;
 
     --cor-titulo: #1E293B;
     --cor-subtitulo: #5C5C5E;
@@ -90,7 +90,7 @@
     color: var(--cor-texto-botao);
     background-color: var(--cor-fundo-botao);
     font-weight: bold;
-    transition: all 0.2s ease-in-out;
+    transition: border-color 0.2s, box-shadow 0.2s ease-in-out;
 }
 
 .botao:hover {
