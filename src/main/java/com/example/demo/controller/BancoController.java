@@ -8,11 +8,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.ui.Model;
 
 import com.example.demo.models.Corrente;
+import com.example.demo.models.Poupanca;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class BancoController {
     private Corrente corrente;
+    private Poupanca poupanca;
 
     @GetMapping("/")
     public String index() {
@@ -100,6 +102,24 @@ public class BancoController {
         Conta poupanca
        ================
     */
+
+    @GetMapping("/entrar-poupanca")
+    public String entrarPoupanca(Model model, HttpSession session) {
+        if (poupanca == null) {
+            poupanca = new Poupanca("Usuario(a)", 0);
+        }
+
+        session.setAttribute("usuario", poupanca);
+        session.setAttribute("tipo", "poupanca");
+
+        return "redirect:/poupanca/dashboard";
+    }
+
+    @GetMapping("/poupanca/dashboard")
+    public String dashboardPoupanca(Model model) {
+        model.addAttribute("usuario", poupanca);
+        return "poupanca/dashboard";
+    }
 
     /*@GetMapping("/entrar-poupanca")
     public String entrarPoupanca(Model model, HttpSession session) {
