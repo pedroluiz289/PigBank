@@ -49,25 +49,25 @@
                 </div>
             </section>
             <section id="acoes-rapidas">
-                <a class="item-acao" href="">
+                <a class="item-acao" th:href="@{/poupanca/deposito}">
                     <div class="item-icone">
                         <span class="material-symbols-outlined">account_balance</span>
                     </div>
                     <p>Depositar</p>
                 </a>
-                <a class="item-acao" href="">
+                <a class="item-acao" th:href="@{/poupanca/resgate}">
                     <div class="item-icone">
                         <span class="material-symbols-outlined">payment_arrow_down</span>
                     </div>
                     <p>Resgatar</p>
                 </a>
-                <a class="item-acao" href="">
+                <a class="item-acao" th:href="@{/poupanca/extrato}">
                     <div class="item-icone">
                         <span class="material-symbols-outlined">receipt_long</span>
                     </div>
                     <p>Extrato</p>
                 </a>
-                <a class="item-acao" href="">
+                <a class="item-acao" th:href="@{/poupanca/simulacao}">
                     <div class="item-icone">
                         <span class="material-symbols-outlined">trending_up</span>
                     </div>
@@ -77,7 +77,7 @@
             <section id="extrato">
                 <div id="extrato-header">
                     <h3 id="extrato-titulo">Últimas Movimentações</h3>
-                    <a id="extrato-link" href="">Ver extrato completo</a>
+                    <a id="extrato-link" th:href="@{/poupanca/simulacao}">Ver extrato completo</a>
                 </div>
                 <th:block th:if="${!#lists.isEmpty(usuario.transacoes)}">
                     <div id="lista-transacoes">

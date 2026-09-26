@@ -121,23 +121,29 @@ public class BancoController {
         return "poupanca/dashboard";
     }
 
-    /*@GetMapping("/entrar-poupanca")
-    public String entrarPoupanca(Model model, HttpSession session) {
-        usuario = new Usuario("Usuario(a)", 0.00);
-
-        model.addAttribute("usuario", usuario);
-        session.setAttribute("tipo", "poupanca");
-        
-        return "redirect:/poupanca/dashboard";
+    @GetMapping("/poupanca/deposito")
+    public String depositoPoupanca(Model model) {
+        model.addAttribute("usuario", poupanca);
+        return "poupanca/deposito";
     }
 
-    @GetMapping("/poupanca/dashboard")
-    public String contaPoupancaWeb(HttpSession session, Model model) {
-        usuario = (Usuario) session.getAttribute("usuario");
+    @GetMapping("/poupanca/resgate")
+    public String resgatePoupanca(Model model) {
+        model.addAttribute("usuario", poupanca);
+        return "poupanca/resgate";
+    }
 
-        model.addAttribute("usuario", usuario);
-        return "poupanca/poupanca";
-    }*/
+    @GetMapping("/poupanca/extrato")
+    public String extratoPoupanca(Model model) {
+        model.addAttribute("usuario", poupanca);
+        return "poupanca/extrato";
+    }
+
+    @GetMapping("/poupanca/simulacao")
+    public String simulacaoPoupanca(Model model) {
+        model.addAttribute("usuario", poupanca);
+        return "poupanca/simulacao";
+    }
 
     @GetMapping("/sair")
     public String sair(HttpSession session) {
