@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Poupanca extends ContaBancaria {
     private double rendimento;
@@ -51,6 +52,7 @@ public class Poupanca extends ContaBancaria {
     }
 
     public List<Transacao> getTransacoes() {
+        this.transacoes.sort(Comparator.comparing(Transacao::getData).reversed());
         return this.transacoes;
     }
 
