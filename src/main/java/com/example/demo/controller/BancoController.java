@@ -127,6 +127,17 @@ public class BancoController {
         return "poupanca/deposito";
     }
 
+    @PostMapping("/poupanca/salvardeposito")
+    public String salvarDepositoPoupanca(@ModelAttribute("usuario") Poupanca form, RedirectAttributes redirectAttributes) {
+        if (poupanca.depositar(form.getSaldo())) {
+            redirectAttributes.addFlashAttribute("sucesso", "");
+        } else {
+            redirectAttributes.addFlashAttribute("erro", "");
+        }
+
+        return "redirect:/poupanca/deposito";
+    }
+
     @GetMapping("/poupanca/resgate")
     public String resgatePoupanca(Model model) {
         model.addAttribute("usuario", poupanca);

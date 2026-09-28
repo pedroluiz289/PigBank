@@ -81,7 +81,7 @@
                 </div>
                 <th:block th:if="${!#lists.isEmpty(usuario.transacoes)}">
                     <div id="lista-transacoes">
-                        <div class="trasacao" th:each="t, quantidade: ${usuario.transacao}" th:if="${quantidade.count < 6}" th:classappend="${quantidade.count == 5 or quantidade.last} ? '' : 'transacao-linha'">
+                        <div class="trasacao" th:each="t, quantidade: ${usuario.transacoes}" th:if="${quantidade.count < 6}" th:classappend="${quantidade.count == 5 or quantidade.last} ? '' : 'transacao-linha'">
                             <div class="informacoes-transacao">
                                 <div class="icone-trasacao">
                                     <span th:text="${t.tipo == 'Deposito'} ? 'account_balance' : 'payment_arrow_down'" class="material-symbols-outlined">person</span>

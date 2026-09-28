@@ -8,6 +8,10 @@ public class Poupanca extends ContaBancaria {
     private double rendimento;
     private List<Transacao> transacoes;
 
+    public Poupanca() {
+        super();
+    }
+
     public Poupanca(String nome, double saldo) {
         super(nome, saldo, 0, 0);
         this.rendimento = 0;
