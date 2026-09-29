@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.example.demo.config.interceptor.AcessoInterceptor;
-
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
@@ -15,6 +13,9 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(acessoInterceptor)
-                .addPathPatterns("/corrente/**", "/poupanca/**");
+                .addPathPatterns(
+                    "/corrente/**", "/poupanca/**",
+                    "/corrente", "/poupanca/**"
+                );
     }
 }

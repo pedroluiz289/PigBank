@@ -1,4 +1,4 @@
-package com.example.demo.config.interceptor;
+package com.example.demo.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -15,13 +15,13 @@ public class AcessoInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         String tipo = (String) session.getAttribute("tipo");
 
-        if (uri.startsWith("/corrente") && !"corrente".equals(tipo)) {
+        if (tipo == null) {
             response.sendRedirect("/");
             return false;
         }
 
-        if (uri.startsWith("/poupanca") && !"poupanca".equals(tipo)) {
-            response.sendRedirect("/");
+        if ("corrente".equalsIgnoreCase(tipo) && uri.startsWith("/poupanca")) {
+            response.sendRedirect("/corrente/dashboard");
             return false;
         }
 
