@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/error/error.css}">
+    <link rel="shortcut icon" th:href="@{/images/favicon-error.ico}" type="image/x-icon">
+    <title>PigBank - Pagina não encontrada</title>
+</head>
+<body>
+    <main id="main-container">
+        <header id="logo-header">
+            <div id="logo">
+                <span id="logo-icone" class="material-symbols-outlined">savings</span>
+                <h2 id="logo-titulo">PigBank</h2>
+            </div>
+        </header>
+        <section id="conteudo-principal">
+            <h1 id="codigo-erro">404</h1>
+            <h2 id="titulo">Página não encontrada</h2>
+            <p id="descricao">A pagina que você está procurando não existe.</p>
+            <p th:text="${message}"></p>
+            <button id="botao-voltar" onclick="history.back()">
+                <span class="material-symbols-outlined">arrow_back_ios</span>
+                <span>Voltar para página anterior</span>
+            </button>
+        </section>
+    </main>
+</body>
+</html>
