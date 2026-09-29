@@ -21,7 +21,12 @@ public class AcessoInterceptor implements HandlerInterceptor {
         }
 
         if ("corrente".equalsIgnoreCase(tipo) && uri.startsWith("/poupanca")) {
-            response.sendRedirect("/corrente/dashboard");
+            response.sendRedirect("/");
+            return false;
+        }
+
+        if ("poupanca".equalsIgnoreCase(tipo) && uri.startsWith("/corrente")) {
+            response.sendRedirect("/");
             return false;
         }
 

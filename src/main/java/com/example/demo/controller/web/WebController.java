@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpSession;
 
 import com.example.demo.models.Corrente;
+import com.example.demo.models.Poupanca;
 
 @Controller
 public class WebController {
@@ -25,9 +26,14 @@ public class WebController {
         return "redirect:/corrente";
     }
 
-    @GetMapping("/entrar-poupanca")
-    public String entrarContaPoupanca() {
-        return "";
+    @PostMapping("/entrar-poupanca")
+    public String entrarContaPoupanca(HttpSession session) {
+        Poupanca poupanca = new Poupanca("Usuario(a)", 0);
+
+        session.setAttribute("contaPoupanca", poupanca);
+        session.setAttribute("tipo", "poupanca");
+
+        return "redirect:/poupanca";
     }
 
     @GetMapping("/sair")

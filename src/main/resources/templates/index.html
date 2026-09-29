@@ -23,13 +23,15 @@
                         <span class="material-symbols-outlined setas">arrow_forward_ios</span>
                     </button>
                 </form>
-                <a th:href="@{/entrar-poupanca}" class="botao">
-                    <div class="botao-conteudo">
-                        <span class="material-symbols-outlined">savings</span>
-                        <span>Conta Poupança</span>
-                    </div>
-                    <span class="material-symbols-outlined setas">arrow_forward_ios</span>
-                </a>
+                <form th:action="@{/entrar-poupanca}" method="post">
+                    <button type="submit" class="botao">
+                        <div class="botao-conteudo">
+                            <span class="material-symbols-outlined">savings</span>
+                            <span>Conta Poupança</span>
+                        </div>
+                        <span class="material-symbols-outlined setas">arrow_forward_ios</span>
+                    </button>
+                </form>
             </div>
             <div id="aviso">
                 <p>Este projeto é uma <strong>demonstração</strong>. Todos os dados apresentados são totalmente <strong>fictícios</strong> e não possuem <strong>valor financeiro real</strong>.</p>
