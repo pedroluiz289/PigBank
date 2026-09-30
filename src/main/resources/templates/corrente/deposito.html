@@ -12,7 +12,7 @@
     <main class="main-container">
         <header>
             <div class="header-topo">
-                <a class="botao-voltar" th:href="@{/corrente/dashboard}">
+                <a class="botao-voltar" th:href="@{/corrente}">
                     <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
                     <span>Voltar</span>
                 </a>
@@ -31,7 +31,7 @@
             </div>
         </header>
         <section class="card">
-            <form th:action="@{/corrente/salvardeposito}" method="post" th:object="${usuario}">
+            <form th:action="@{/corrente/depositar}" method="post" th:object="${usuario}">
                 <div id="campo-saldo">
                     <label for="saldo">Valor do Depósito</label>
                     <div class="saldo-wrapper">

@@ -1,5 +1,5 @@
 package com.example.demo.controller.api;
 
-public class ContaCorrenteController {
+public class ApiPoupancaController {
     
 }

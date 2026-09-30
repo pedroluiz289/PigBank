@@ -29,9 +29,17 @@ abstract class ContaBancaria {
         this.conta = String.format("%07d-%d", random.nextInt(0, 10000000), random.nextInt(0, 10));
     }
 
-    public abstract boolean depositar(double valor);
+    public abstract void depositar(double valor);
 
-    public abstract boolean sacar(double valor);
+    public abstract void sacar(double valor);
+
+    public void adicionarEntrada(double valor) {
+        this.entradas += valor;
+    }
+
+    public void adicionarSaida(double valor) {
+        this.saidas += valor;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
@@ -39,10 +47,6 @@ abstract class ContaBancaria {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
-    }
-
-    public void setEntradas(double valor) {
-        this.entradas = valor;
     }
 
     public void setSaidas(double valor) {

@@ -23,19 +23,12 @@ public class Corrente extends ContaBancaria {
     }
 
     @Override
-    public boolean depositar(double valor) {
+    public void depositar(double valor) {
         double saldo = getSaldo();
         double entradas = getEntradas();
-
-        if (valor <= 0) {
-            return false;
-        }
- 
-        setSaldo(saldo + valor);
-        setEntradas(entradas + valor);
+  
+        setEntradas(valor);
         adicionarTransacao("Deposito", valor);
-
-        return true;
     }
 
     @Override

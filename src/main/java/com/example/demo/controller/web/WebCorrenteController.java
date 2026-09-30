@@ -25,4 +25,12 @@ public class WebCorrenteController {
         model.addAttribute("usuario", usuario);
         return "corrente/dashboard";
     }
+
+    @GetMapping("/deposito")
+    public String deposito(Model model, HttpSession session) {
+        Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
+
+        model.addAttribute("usuario", usuario);
+        return "corrente/deposito";
+    }
 }
