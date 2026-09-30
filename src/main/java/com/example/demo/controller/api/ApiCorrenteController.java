@@ -1,13 +1,17 @@
 package com.example.demo.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.exception.RespostaApi;
+import com.example.demo.models.Corrente;
 import com.example.demo.service.CorrenteService;
+
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping({"/corrente", "/corrente/"})
@@ -17,7 +21,18 @@ public class ApiCorrenteController {
     private CorrenteService correnteService;
 
     @PostMapping("/depositar")
-    public String depositar() {
-        return "saque";
+    public ResponseEntity<RespostaApi> depositar(@ModelAttribute("usuario") Corrente formulario, HttpSession session) {
+        Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
+
+        if (usuario == null) {
+            return ResponseEntity.status(401).body(new RespostaApi(false, "Sessão expirada."));
+        }
+
+        try {
+            correnteService.deposito(usuario, formulario.getSaldo());
+            return ResponseEntity.ok(new RespostaApi(true, "Depósito realizado com sucesso!"));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(new RespostaApi(false, e.getMessage()));
+        }
     }
 }

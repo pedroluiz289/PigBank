@@ -19,23 +19,18 @@ public class Poupanca extends ContaBancaria {
     }
 
     @Override
-    public boolean depositar(double valor) {
+    public void depositar(double valor) {
         if (valor > 0) {
             double saldoAtual = super.getSaldo();
-            double entradaAtual = super.getEntradas();
 
             super.setSaldo(saldoAtual + valor);
-            super.setEntradas(entradaAtual + valor);
+            super.adicionarEntrada(valor);
             adicionarTransacao("Deposito", valor);
-
-            return true;
         }
-
-        return false;
     }
 
     @Override
-    public boolean sacar(double valor) {
+    public void sacar(double valor) {
         if (valor > 0 && super.getSaldo() >= valor) {
             double saldoAtual = super.getSaldo();
             double saidaAtual = super.getSaidas();
@@ -44,11 +39,7 @@ public class Poupanca extends ContaBancaria {
             super.setSaidas(saidaAtual + valor);
 
             adicionarTransacao("Saque", valor);
-
-            return true;
         }
-
-        return false;
     }
 
     private void adicionarTransacao(String tipo, double valor) {

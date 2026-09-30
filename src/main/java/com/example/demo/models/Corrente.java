@@ -25,14 +25,14 @@ public class Corrente extends ContaBancaria {
     @Override
     public void depositar(double valor) {
         double saldo = getSaldo();
-        double entradas = getEntradas();
   
-        setEntradas(valor);
+        super.setSaldo(saldo + valor);
+        super.adicionarEntrada(valor);
         adicionarTransacao("Deposito", valor);
     }
 
     @Override
-    public boolean sacar(double valor) {
+    public void sacar(double valor) {
         double saldo = getSaldo();
         double saidas = getSaidas();
 
@@ -40,11 +40,7 @@ public class Corrente extends ContaBancaria {
             setSaldo(saldo - valor);
             setSaidas(saidas + valor);
             adicionarTransacao("Saque", valor);
-
-            return true;
         }
-
-        return false;
     }
 
     public double getLimiteDisponivel() {
