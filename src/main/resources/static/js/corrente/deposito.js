@@ -33,20 +33,41 @@ function mostrarSaldo(botao) {
     }
 }
 
-function mostrarNotificacao() {
-    const notificacao = document.getElementById("notificacao");
+let notificacaoTimer = null;
 
-    if (notificacao) {
-        notificacao.show();
-    
-        setTimeout(() => {
-            notificacao.classList.add("notificacao-fechar");
-            notificacao.addEventListener("animationend", function() {
-                notificacao.close();
-                notificacao.classList.remove("notificacao-fechar");
-            }, {once: true});
-        }, 5000);
+function mostrarNotificacao(sucesso, mensagem) {
+    const notificacao = document.getElementById("notificacao");
+    const icone = document.getElementById("icone-notificacao");
+    const texto = document.getElementById("texto-notificacao");
+
+    if (notificacaoTimer) {
+        clearTimeout(notificacaoTimer);
+        notificacao.classList.remove("notificacao-sucesso");
+        notificacao.classList.remove("notificacao-erro");
     }
+
+    if (sucesso) {
+        notificacao.classList.add("notificacao-sucesso");
+        icone.innerText = "check";
+    } else {
+        notificacao.classList.add("notificacao-erro");
+        icone.innerText = "close";
+    }
+
+    texto.textContent = mensagem;
+    notificacao.show();
+
+    notificacaoTimer = setTimeout(() => {
+        notificacao.classList.add("notificacao-fechar");
+
+        notificacao.addEventListener("animationend", function() {
+            notificacao.close();
+
+            notificacao.classList.remove("notificacao-fechar");
+            notificacao.classList.remove("notificacao-sucesso");
+            notificacao.classList.remove("notificacao-erro");
+        }, {once: true});
+    }, 5000);
 }
 
 function alterarEstado(botao) {
@@ -71,11 +92,12 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     evento.preventDefault();
 
     const saldoInput = document.getElementById("saldo").value.replace(",", ".");
+    const saldoValor = document.getElementById("saldo-valor");
+    const valorSaldo = saldoValor.dataset.saldo;
+
     const dataFormulario = {
         saldo: parseFloat(saldoInput)
     };
-
-    const textoNotificacao = document.getElementById("texto-notificacao");
 
     fetch("/corrente/depositar", {
         method: "POST",
@@ -87,15 +109,15 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     .then(resposta => resposta.json())
     .then(data => {
         if (data.sucesso) {
-            textoNotificacao.textContent = data.mensagem;
+            mostrarNotificacao(true, data.mensagem);
+            
+            saldoValor.innerText = "R$ " + Number(valorSaldo).toFixed(2).replace(".", ",");
             document.getElementById("formulario").reset();
         } else {
-            textoNotificacao.textContent = data.mensagem;
+            mostrarNotificacao(false, data.mensagem);
         }
     })
     .catch(erro => {
-        textoNotificacao.textContent = erro;
+        mostrarNotificacao(false, erro);
     });
-
-    mostrarNotificacao();
 });

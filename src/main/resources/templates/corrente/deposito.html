@@ -22,7 +22,7 @@
             <div class="header-saldo">
                 <div>
                     <p id="header-saldo-titulo">Saldo Atual</p>
-                    <strong id="saldo-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" class="header-valor">0.00</strong>
+                    <strong id="saldo-valor" th:data-saldo="${usuario.saldo}" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" class="header-valor">0.00</strong>
                 </div>
                 <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" type="button">
                     <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
@@ -59,7 +59,7 @@
                 </div>
             </form>
         </section>
-        <dialog id="notificacao" class="notificacao-sucesso">
+        <dialog id="notificacao">
             <span id="icone-notificacao" class="material-symbols-outlined icone-notificacao-sucesso">check</span>
             <p id="texto-notificacao"></p>
         </dialog>
