@@ -65,6 +65,37 @@ window.addEventListener("DOMContentLoaded", () => {
             alterarEstado(botaoSaldo);
         });
     }
+}); 
+
+document.getElementById("formulario").addEventListener("submit", function(evento) {
+    evento.preventDefault();
+
+    const saldoInput = document.getElementById("saldo").value.replace(",", ".");
+    const dataFormulario = {
+        saldo: parseFloat(saldoInput)
+    };
+
+    const textoNotificacao = document.getElementById("texto-notificacao");
+
+    fetch("/corrente/depositar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dataFormulario)
+    })
+    .then(resposta => resposta.json())
+    .then(data => {
+        if (data.sucesso) {
+            textoNotificacao.textContent = data.mensagem;
+            document.getElementById("formulario").reset();
+        } else {
+            textoNotificacao.textContent = data.mensagem;
+        }
+    })
+    .catch(erro => {
+        textoNotificacao.textContent = erro;
+    });
 
     mostrarNotificacao();
-}); 
+});

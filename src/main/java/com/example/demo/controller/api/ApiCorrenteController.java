@@ -2,11 +2,12 @@ package com.example.demo.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dto.OperacaoDTO;
 import com.example.demo.exception.RespostaApi;
 import com.example.demo.models.Corrente;
 import com.example.demo.service.CorrenteService;
@@ -21,7 +22,7 @@ public class ApiCorrenteController {
     private CorrenteService correnteService;
 
     @PostMapping("/depositar")
-    public ResponseEntity<RespostaApi> depositar(@ModelAttribute("usuario") Corrente formulario, HttpSession session) {
+    public ResponseEntity<RespostaApi> depositar(@RequestBody OperacaoDTO dto, HttpSession session) {
         Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
 
         if (usuario == null) {
@@ -29,7 +30,8 @@ public class ApiCorrenteController {
         }
 
         try {
-            correnteService.deposito(usuario, formulario.getSaldo());
+            correnteService.deposito(usuario, dto.saldo());
+
             return ResponseEntity.ok(new RespostaApi(true, "Depósito realizado com sucesso!"));
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(new RespostaApi(false, e.getMessage()));

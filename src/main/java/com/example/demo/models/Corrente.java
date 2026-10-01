@@ -10,6 +10,7 @@ public class Corrente extends ContaBancaria {
 
     public Corrente() {
         super();
+        this.transacoes = new ArrayList<>();
     }
 
     public Corrente(String nome, double saldo, double limiteTotal) {

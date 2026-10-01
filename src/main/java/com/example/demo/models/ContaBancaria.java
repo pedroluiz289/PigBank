@@ -29,10 +29,6 @@ abstract class ContaBancaria {
         this.conta = String.format("%07d-%d", random.nextInt(0, 10000000), random.nextInt(0, 10));
     }
 
-    public abstract void depositar(double valor);
-
-    public abstract void sacar(double valor);
-
     public void adicionarEntrada(double valor) {
         this.entradas += valor;
     }
@@ -76,4 +72,8 @@ abstract class ContaBancaria {
     public int getAgencia() {
         return this.agencia;
     }
+
+    public abstract void depositar(double valor);
+
+    public abstract void sacar(double valor);
 }
