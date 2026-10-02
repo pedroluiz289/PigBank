@@ -1,4 +1,7 @@
 const saldoInput = document.getElementById("saldo");
+const botaoSaldo = document.getElementById("botao-mostrar-saldo");
+
+let valor = botaoSaldo.dataset.saldo;
 let visivel = localStorage.getItem("saldoVisivel") !== "false";
 
 function adicionarValor(valor) {
@@ -9,31 +12,47 @@ function adicionarValor(valor) {
     saldoInput.value = resultado.toFixed(2).replace(".", ",");
 }
 
-function validarSaque() {
-    const valor = document.getElementById("saldo").value;
+let notificacaoTimer = null;
 
-    if (valor <= 0) {
-        alert("O valor tem que ser maior de R$ 0,00");
-        return false;
-    }
-
-    return true;
-}
-
-function mostrarNotificacao() {
+function mostrarNotificacao(sucesso, mensagem) {
     const notificacao = document.getElementById("notificacao");
+    const icone = document.getElementById("icone-notificacao");
+    const texto = document.getElementById("texto-notificacao");
 
-    if (notificacao) {
-        notificacao.show();
-    
-        setTimeout(() => {
-            notificacao.classList.add("notificacao-fechar");
-            notificacao.addEventListener('animationend', function() {
-                notificacao.close();
-                notificacao.classList.remove("notificacao-fechar");
-            }, {once: true});
-        }, 5000);
+    if (notificacaoTimer) {
+        clearTimeout(notificacaoTimer);
+        notificacao.classList.remove("notificacao-sucesso");
+        notificacao.classList.remove("notificacao-erro");
+        icone.classList.remove("icone-notificacao-sucesso");
+        icone.classList.remove("icone-notificacao-erro");
     }
+
+    if (sucesso) {
+        notificacao.classList.add("notificacao-sucesso");
+        icone.classList.add("icone-notificacao-sucesso");
+        icone.innerText = "check";
+    } else {
+        notificacao.classList.add("notificacao-erro");
+        icone.classList.add("icone-notificacao-erro");
+        icone.innerText = "close";
+    }
+
+    texto.textContent = mensagem;
+    notificacao.show();
+
+    notificacaoTimer = setTimeout(() => {
+        notificacao.classList.add("notificacao-fechar");
+
+        notificacao.addEventListener("animationend", function() {
+            notificacao.close();
+
+            notificacao.classList.remove("notificacao-fechar");
+            notificacao.classList.remove("notificacao-sucesso");
+            notificacao.classList.remove("notificacao-erro");
+            icone.classList.remove("icone-notificacao-sucesso");
+            icone.classList.remove("icone-notificacao-erro");
+        }, {once: true});
+    }, 5000);
 }
 
 saldoInput.addEventListener("keypress", function (evento) {
@@ -61,9 +80,8 @@ saldoInput.addEventListener("keypress", function (evento) {
     }
 });
 
-function mostrarSaldo(botao) {
-    const valor = botao.dataset.saldo;
-    const limite = botao.dataset.limite;
+function mostrarSaldo() {
+    const limite = botaoSaldo.dataset.limite;
 
     const valorSaldo = document.getElementById("valor-saldo-disponivel");
     const valorLimite = document.getElementById("valor-limite-disponivel");
@@ -101,15 +119,48 @@ function alterarEstado(botao) {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    const botaoSaldo = document.getElementById("botao-mostrar-saldo");
-
     if (botaoSaldo) {
-        mostrarSaldo(botaoSaldo);
+        mostrarSaldo();
 
         botaoSaldo.addEventListener("click", () => {
-            alterarEstado(botaoSaldo);
+            alterarEstado();
         });
     }
+});
 
-    mostrarNotificacao();
+document.getElementById("formulario").addEventListener("submit", function(evento) {
+     evento.preventDefault();
+
+    const valorInput = saldoInput.value.replace(",", ".");
+    const saldoValor = document.getElementById("valor-saldo-disponivel");
+
+    const dataFormulario = {
+        saldo: parseFloat(valorInput)
+    };
+
+    fetch("/corrente/sacar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dataFormulario)
+    })
+    .then(resposta => resposta.json())
+    .then(data => {
+        if (data.sucesso) {
+            if (visivel) {
+                const novoSaldo = Number(data.novoSaldo).toFixed(2).replace(".", ",");
+                saldoValor.innerText = "R$ " + novoSaldo;
+            }
+
+            mostrarNotificacao(true, data.mensagem);
+            valor = data.novoSaldo;
+            document.getElementById("formulario").reset();
+        } else {
+            mostrarNotificacao(false, data.mensagem);
+        }
+    })
+    .catch(erro => {
+        mostrarNotificacao(false, erro);
+    });
 });

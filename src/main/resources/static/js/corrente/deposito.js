@@ -12,9 +12,28 @@ function adicionarValor(valor) {
     saldoInput.value = resultado.toFixed(2).replace(".", ",");
 }
 
-saldoInput.addEventListener("keypress", function(evento) {
+saldoInput.addEventListener("keypress", function (evento) {
     if (!/[0-9.,]/.test(evento.key)) {
         evento.preventDefault();
+    }
+
+    const valorAtual = this.value;
+    const posicaoCursor = this.selectionStart;
+    const indiceSeparador = valorAtual.search(/[.,]/);
+
+    if (indiceSeparador !== -1) {
+        if (/[.,]/.test(evento.key)) {
+            evento.preventDefault();
+            return;
+        }
+
+        if (posicaoCursor > indiceSeparador) {
+            const casasDecimais = valorAtual.substring(indiceSeparador + 1);
+
+            if (casasDecimais.length >= 2) {
+                evento.preventDefault();
+            }
+        }
     }
 });
 
