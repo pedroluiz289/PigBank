@@ -1,4 +1,7 @@
 const saldoInput = document.getElementById("saldo");
+const botaoSaldo = document.getElementById("botao-mostrar-saldo");
+
+let valor = botaoSaldo.dataset.saldo;
 let visivel = localStorage.getItem("saldoVisivel") !== "false";
 
 function adicionarValor(valor) {
@@ -15,8 +18,7 @@ saldoInput.addEventListener("keypress", function(evento) {
     }
 });
 
-function mostrarSaldo(botao) {
-    const valor = botao.dataset.saldo;
+function mostrarSaldo() {
     const saldoValor = document.getElementById("saldo-valor");
 
     const icone = document.getElementById("mostrar-saldo-icone");
@@ -44,13 +46,17 @@ function mostrarNotificacao(sucesso, mensagem) {
         clearTimeout(notificacaoTimer);
         notificacao.classList.remove("notificacao-sucesso");
         notificacao.classList.remove("notificacao-erro");
+        icone.classList.remove("icone-notificacao-sucesso");
+        icone.classList.remove("icone-notificacao-erro");
     }
 
     if (sucesso) {
         notificacao.classList.add("notificacao-sucesso");
+        icone.classList.add("icone-notificacao-sucesso");
         icone.innerText = "check";
     } else {
         notificacao.classList.add("notificacao-erro");
+        icone.classList.add("icone-notificacao-erro");
         icone.innerText = "close";
     }
 
@@ -66,24 +72,24 @@ function mostrarNotificacao(sucesso, mensagem) {
             notificacao.classList.remove("notificacao-fechar");
             notificacao.classList.remove("notificacao-sucesso");
             notificacao.classList.remove("notificacao-erro");
+            icone.classList.remove("icone-notificacao-sucesso");
+            icone.classList.remove("icone-notificacao-erro");
         }, {once: true});
     }, 5000);
 }
 
-function alterarEstado(botao) {
+function alterarEstado() {
     visivel = !visivel;
     localStorage.setItem("saldoVisivel", visivel);
-    mostrarSaldo(botao);
+    mostrarSaldo();
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-    const botaoSaldo = document.getElementById("botao-mostrar-saldo");
-
     if (botaoSaldo) {
-        mostrarSaldo(botaoSaldo);
+        mostrarSaldo();
 
         botaoSaldo.addEventListener("click", () => {
-            alterarEstado(botaoSaldo);
+            alterarEstado();
         });
     }
 }); 
@@ -91,12 +97,11 @@ window.addEventListener("DOMContentLoaded", () => {
 document.getElementById("formulario").addEventListener("submit", function(evento) {
     evento.preventDefault();
 
-    const saldoInput = document.getElementById("saldo").value.replace(",", ".");
+    const valorInput = saldoInput.value.replace(",", ".");
     const saldoValor = document.getElementById("saldo-valor");
-    const valorSaldo = saldoValor.dataset.saldo;
 
     const dataFormulario = {
-        saldo: parseFloat(saldoInput)
+        saldo: parseFloat(valorInput)
     };
 
     fetch("/corrente/depositar", {
@@ -109,9 +114,13 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     .then(resposta => resposta.json())
     .then(data => {
         if (data.sucesso) {
+            if (visivel) {
+                const novoSaldo = Number(data.novoSaldo).toFixed(2).replace(".", ",");
+                saldoValor.innerText = "R$ " + novoSaldo;
+            }
+
             mostrarNotificacao(true, data.mensagem);
-            
-            saldoValor.innerText = "R$ " + Number(valorSaldo).toFixed(2).replace(".", ",");
+            valor = data.novoSaldo;
             document.getElementById("formulario").reset();
         } else {
             mostrarNotificacao(false, data.mensagem);
