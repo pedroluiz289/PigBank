@@ -52,6 +52,10 @@ public class Corrente extends ContaBancaria {
         return this.limiteTotal;
     }
 
+    public double getLimite() {
+        return this.limiteTotal;
+    }
+
     public List<Transacao> getTransacao() {
         this.transacoes.sort(Comparator.comparing(Transacao::getData).reversed());
         return this.transacoes;

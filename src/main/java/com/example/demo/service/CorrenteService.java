@@ -23,11 +23,13 @@ public class CorrenteService {
             throw new IllegalArgumentException("O valor do saque tem que ser maior que zero");
         }
 
-        if (usuario.getLimiteDisponivel() < valor) {
+        double totalDisponivel = usuario.getSaldo() + usuario.getLimite();
+
+        if (valor > totalDisponivel) {
             throw new SaldoInsuficienteException("Saldo e limite de crédito insuficientes.");
         }
 
         usuario.sacar(valor);
-        return new CorrenteRespostaSacarDTO(true, "Saque de R$" + String.format("%.2f", valor) + " foi realizado com sucesso!", usuario.getSaldo());
+        return new CorrenteRespostaSacarDTO(true, "Saque de R$" + String.format("%.2f", valor) + " foi realizado com sucesso!", usuario.getSaldo(), usuario.getLimiteDisponivel());
     }
 }

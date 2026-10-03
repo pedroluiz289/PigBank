@@ -1,7 +1,9 @@
 const saldoInput = document.getElementById("saldo");
 const botaoSaldo = document.getElementById("botao-mostrar-saldo");
+const valorTotal = document.getElementById("valor-total");
 
 let valor = botaoSaldo.dataset.saldo;
+let limite = botaoSaldo.dataset.limite;
 let visivel = localStorage.getItem("saldoVisivel") !== "false";
 
 function adicionarValor(valor) {
@@ -81,11 +83,8 @@ saldoInput.addEventListener("keypress", function (evento) {
 });
 
 function mostrarSaldo() {
-    const limite = botaoSaldo.dataset.limite;
-
     const valorSaldo = document.getElementById("valor-saldo-disponivel");
     const valorLimite = document.getElementById("valor-limite-disponivel");
-    const valorTotal = document.getElementById("valor-total");
 
     const icone = document.getElementById("mostrar-saldo-icone");
     const textoIcone = document.getElementById("texto-icone");
@@ -133,6 +132,7 @@ document.getElementById("formulario").addEventListener("submit", function(evento
 
     const valorInput = saldoInput.value.replace(",", ".");
     const saldoValor = document.getElementById("valor-saldo-disponivel");
+    const valorLimite = document.getElementById("valor-limite-disponivel");
 
     const dataFormulario = {
         saldo: parseFloat(valorInput)
@@ -149,13 +149,25 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     .then(data => {
         if (data.sucesso) {
             if (visivel) {
-                const novoSaldo = Number(data.novoSaldo).toFixed(2).replace(".", ",");
-                saldoValor.innerText = "R$ " + novoSaldo;
+                const novoSaldo = Number(data.novoSaldo);
+                const novoLimite = Number(data.novoLimite);
+
+                saldoValor.innerText = "R$ " + novoSaldo.toFixed(2).replace(".", ",");
+                valorLimite.innerText = "R$ " + novoLimite.toFixed(2).replace(".", ",");
+
+                if (novoSaldo > 0) {
+                    const total = novoSaldo + novoLimite;
+                    valorTotal.innerText = "R$ " + total.toFixed(2).replace(".", ",");
+                } else {
+                    valorTotal.innerText = "R$ " + novoLimite.toFixed(2).replace(".", ",");
+                }
             }
 
-            mostrarNotificacao(true, data.mensagem);
             valor = data.novoSaldo;
+            limite = data.novoLimite;
+
             document.getElementById("formulario").reset();
+            mostrarNotificacao(true, data.mensagem);
         } else {
             mostrarNotificacao(false, data.mensagem);
         }
