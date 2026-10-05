@@ -22,7 +22,7 @@
             <div id="resumo-saldo">
                 <div id="header-saldo">
                     <h4>Saldos Disponíveis</h4>
-                    <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" th:data-limite="${usuario.getLimiteDisponivel}" type="button">
+                    <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" th:data-limite="${usuario.getLimiteTotalDisponivel()}" type="button">
                         <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
                         <span id="texto-icone">Ocultar</span>
                     </button>
@@ -39,15 +39,15 @@
                         <span class="material-symbols-outlined container-icone">credit_score</span>
                         <span>Limite Disponivel</span>
                     </p>
-                    <strong id="valor-limite-disponivel" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel, 1, 2)}">R$ 0,00</strong>
+                    <strong id="valor-limite-disponivel" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteTotalDisponivel(), 1, 2)}">R$ 0,00</strong>
                 </div>
                 <div id="ultimo-container" class="containers">
                     <p class="container-titulo">Saldo total para o Saque</p>
                     <th:block th:if="${usuario.saldo > 0}">
-                        <strong id="valor-total" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel + usuario.saldo, 1, 2)}">R$ 0,00</strong>
+                        <strong id="valor-total" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteTotalDisponivel() + usuario.saldo, 1, 2)}">R$ 0,00</strong>
                     </th:block>
                     <th:block th:unless="${usuario.saldo > 0}">
-                        <strong id="valor-total" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteDisponivel, 1, 2)}">R$ 0,00</strong>
+                        <strong id="valor-total" class="container-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.getLimiteTotalDisponivel(), 1, 2)}">R$ 0,00</strong>
                     </th:block>
                 </div>
             </div>

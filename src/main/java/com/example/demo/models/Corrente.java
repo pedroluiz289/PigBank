@@ -35,16 +35,13 @@ public class Corrente extends ContaBancaria {
     @Override
     public void sacar(double valor) {
         double saldo = getSaldo();
-        double saidas = getSaidas();
 
-        if (saldo + this.limiteTotal >= valor) {
-            setSaldo(saldo - valor);
-            setSaidas(saidas + valor);
-            adicionarTransacao("Saque", valor);
-        }
+        super.setSaldo(saldo - valor);
+        super.adicionarSaida(valor);
+        adicionarTransacao("Saque", valor);
     }
 
-    public double getLimiteDisponivel() {
+    public double getLimiteTotalDisponivel() {
         if (getSaldo() < 0) {
             return this.limiteTotal + getSaldo();
         }
@@ -52,7 +49,7 @@ public class Corrente extends ContaBancaria {
         return this.limiteTotal;
     }
 
-    public double getLimite() {
+    public double getLimiteTotal() {
         return this.limiteTotal;
     }
 

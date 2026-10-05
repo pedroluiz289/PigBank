@@ -24,6 +24,10 @@ public class DateUtils {
     }
 
     public String tempoNormal(LocalDateTime data) {
+        if (data == null) {
+            return "";
+        }
+
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yy");
         return data.format(formatador);
     }

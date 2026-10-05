@@ -29,6 +29,10 @@ public class WebCorrenteController {
     public String deposito(Model model, HttpSession session) {
         Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
 
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
         model.addAttribute("usuario", usuario);
         return "corrente/deposito";
     }
@@ -37,7 +41,23 @@ public class WebCorrenteController {
     public String saque(Model model, HttpSession session) {
         Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
 
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
         model.addAttribute("usuario", usuario);
         return "corrente/saque";
+    }
+
+    @GetMapping("/extrato")
+    public String extrato(Model model, HttpSession session) {
+        Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "corrente/extrato";
     }
 }
