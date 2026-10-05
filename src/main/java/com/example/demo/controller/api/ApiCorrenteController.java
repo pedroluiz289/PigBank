@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.request.corrente.CorrenteDepositoDTO;
 import com.example.demo.dto.request.corrente.CorrenteSacarDTO;
+import com.example.demo.dto.request.corrente.CorrenteSalvarDTO;
 import com.example.demo.dto.response.corrente.CorrenteRespostaDepositoDTO;
 import com.example.demo.dto.response.corrente.CorrenteRespostaSacarDTO;
+import com.example.demo.dto.response.corrente.CorrenteRespostaSalvarDTO;
 import com.example.demo.exception.RespostaApi;
 import com.example.demo.models.Corrente;
 import com.example.demo.service.CorrenteService;
@@ -51,6 +53,23 @@ public class ApiCorrenteController {
 
         try {
             CorrenteRespostaSacarDTO resposta = correnteService.sacar(usuario, dto.saldo());
+
+            return ResponseEntity.ok(resposta);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(new RespostaApi(false, e.getMessage()));
+        }
+    }
+
+    @PostMapping("/salvar")
+    public ResponseEntity<?> salvar(@RequestBody CorrenteSalvarDTO dto, HttpSession session) {
+        Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
+
+        if (usuario == null) {
+            return ResponseEntity.status(401).body(new RespostaApi(false, "Sessão expirada."));
+        }
+
+        try {
+            CorrenteRespostaSalvarDTO resposta = correnteService.salvar(usuario, dto.nome());
 
             return ResponseEntity.ok(resposta);
         } catch (Exception e) {

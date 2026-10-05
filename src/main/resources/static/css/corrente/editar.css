@@ -1,5 +1,25 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,arrow_back_ios,arrow_forward_ios,person");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,arrow_back_ios,check,close,arrow_forward_ios,person");
+@keyframes deslizarCima {
+    from { 
+        transform: translateY(150%); 
+    }
+
+    to { 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes deslizarBaixo {
+    from { 
+        transform: translateY(0); 
+    }
+
+    to { 
+        transform: translateY(150%); 
+    }
+}
+
 
 :root {
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -38,6 +58,14 @@
     --cor-texto-botao-salvar: white;
     --cor-fundo-botao-salvar-hover: var(--cor-segundaria);
     --cor-sombra-botao-salvar-hover: rgba(249, 143, 180, 0.5);
+
+    --cor-fundo-notificacao-sucesso: #DDFBE6;
+    --cor-borda-notificacao-sucesso: #2CA24F;
+    --cor-icone-notificacao-sucesso: #2CA24F;
+
+    --cor-fundo-notificacao-erro: #FDE1E4;
+    --cor-borda-notificacao-erro: #CA3F42;
+    --cor-icone-notificacao-erro: #CA3F42;
 }
 
 * {
@@ -171,4 +199,46 @@
 #botao-salvar:hover {
     background-color: var(--cor-fundo-botao-salvar-hover);
     box-shadow: 0px 4px 12px var(--cor-sombra-botao-salvar-hover);
+}
+
+#notificacao:open {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: deslizarCima 0.3s ease-out;
+}
+
+#notificacao:open.notificacao-fechar {
+    animation: deslizarBaixo 0.3s ease-in;
+}
+
+#notificacao {
+    position: fixed;
+    margin: 0px auto;
+    bottom: 20px;
+    padding: 10px;
+    outline: none;
+    border-radius: 10px;
+}
+
+#icone-notificacao {
+    font-size: 32px;
+}
+
+.notificacao-sucesso {
+    background-color: var(--cor-fundo-notificacao-sucesso);
+    border: 2px solid var(--cor-borda-notificacao-sucesso);
+}
+
+.notificacao-erro {
+    background-color: var(--cor-fundo-notificacao-erro);
+    border: 2px solid var(--cor-borda-notificacao-erro);
+}
+
+.icone-notificacao-sucesso {
+    color: var(--cor-icone-notificacao-sucesso);
+}
+
+.icone-notificacao-erro {
+    color: var(--cor-icone-notificacao-erro);
 }

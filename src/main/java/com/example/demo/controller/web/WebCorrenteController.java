@@ -60,4 +60,16 @@ public class WebCorrenteController {
         model.addAttribute("usuario", usuario);
         return "corrente/extrato";
     }
+
+    @GetMapping("/editar")
+    public String editar(Model model, HttpSession session) {
+        Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "corrente/editarperfil";
+    }
 }

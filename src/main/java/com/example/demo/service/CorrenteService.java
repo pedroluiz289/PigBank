@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.response.corrente.CorrenteRespostaDepositoDTO;
 import com.example.demo.dto.response.corrente.CorrenteRespostaSacarDTO;
+import com.example.demo.dto.response.corrente.CorrenteRespostaSalvarDTO;
 import com.example.demo.exception.SaldoInsuficienteException;
 import com.example.demo.models.Corrente;
 
@@ -31,5 +32,14 @@ public class CorrenteService {
 
         usuario.sacar(valor);
         return new CorrenteRespostaSacarDTO(true, "Saque de R$" + String.format("%.2f", valor) + " foi realizado com sucesso!", usuario.getSaldo(), usuario.getLimiteTotalDisponivel());
+    }
+
+    public CorrenteRespostaSalvarDTO salvar(Corrente usuario, String nome) {
+        if (nome.isEmpty() || nome.isBlank()) {
+            throw new IllegalArgumentException("O campo do nome não pode estar vazio ou conter somente espaço.");
+        }
+
+        usuario.setNome(nome);
+        return new CorrenteRespostaSalvarDTO(true, "O nome foi alterado com sucesso");
     }
 }
