@@ -72,4 +72,16 @@ public class WebPoupancaController {
         model.addAttribute("usuario", usuario);
         return "poupanca/simulacao";
     }
+
+    @GetMapping("/editar")
+    public String editar(Model model, HttpSession session) {
+        Poupanca usuario = (Poupanca) session.getAttribute("contaPoupanca");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "poupanca/editarperfil";
+    }
 }
