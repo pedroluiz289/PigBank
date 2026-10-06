@@ -24,4 +24,52 @@ public class WebPoupancaController {
         model.addAttribute("usuario", usuario);
         return "poupanca/dashboard";
     }
+
+    @GetMapping("/deposito")
+    public String deposito(Model model, HttpSession session) {
+        Poupanca usuario = (Poupanca) session.getAttribute("contaPoupanca");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "poupanca/deposito";
+    }
+
+    @GetMapping("/resgate")
+    public String resgate(Model model, HttpSession session) {
+        Poupanca usuario = (Poupanca) session.getAttribute("contaPoupanca");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "poupanca/resgate";
+    }
+
+    @GetMapping("/extrato")
+    public String extrato(Model model, HttpSession session) {
+        Poupanca usuario = (Poupanca) session.getAttribute("contaPoupanca");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "poupanca/extrato";
+    }
+
+    @GetMapping("/simulacao")
+    public String simulacao(Model model, HttpSession session) {
+        Poupanca usuario = (Poupanca) session.getAttribute("contaPoupanca");
+
+        if (usuario == null) {
+            return "redirect:/";
+        }
+
+        model.addAttribute("usuario", usuario);
+        return "poupanca/simulacao";
+    }
 }
