@@ -10,6 +10,7 @@ public class Poupanca extends ContaBancaria {
 
     public Poupanca() {
         super();
+        this.transacoes = new ArrayList<>();
     }
 
     public Poupanca(String nome, double saldo) {
