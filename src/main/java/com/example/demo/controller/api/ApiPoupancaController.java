@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.request.poupanca.PoupancaDepositoDTO;
 import com.example.demo.dto.response.poupanca.PoupancaRespostaDepositoDTO;
+import com.example.demo.dto.response.poupanca.PoupancaRespostaResgateDTO;
 import com.example.demo.exception.RespostaApi;
 import com.example.demo.models.Poupanca;
 import com.example.demo.service.PoupancaService;
@@ -34,6 +35,23 @@ public class ApiPoupancaController {
 
             return ResponseEntity.ok(resposta);
         } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(new RespostaApi(false, e.getMessage()));
+        }
+    }
+
+    @PostMapping("/resgatar")
+    public ResponseEntity<?> resgatar(@RequestBody PoupancaDepositoDTO dto, HttpSession session) {
+        Poupanca usuario = (Poupanca) session.getAttribute("contaPoupanca");
+
+        if (usuario == null) {
+            return ResponseEntity.status(401).body(new RespostaApi(false, "Sessão expirada."));
+        }
+
+        try {
+            PoupancaRespostaResgateDTO resposta = poupancaService.resgate(usuario, dto.saldo());
+
+            return ResponseEntity.ok(resposta);
+        } catch (Exception e) {
             return ResponseEntity.badRequest().body(new RespostaApi(false, e.getMessage()));
         }
     }

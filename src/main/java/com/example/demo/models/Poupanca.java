@@ -21,13 +21,11 @@ public class Poupanca extends ContaBancaria {
 
     @Override
     public void depositar(double valor) {
-        if (valor > 0) {
-            double saldoAtual = super.getSaldo();
+        double saldoAtual = super.getSaldo();
 
-            super.setSaldo(saldoAtual + valor);
-            super.adicionarEntrada(valor);
-            adicionarTransacao("Deposito", valor);
-        }
+        super.setSaldo(saldoAtual + valor);
+        super.adicionarEntrada(valor);
+        adicionarTransacao("Deposito", valor);
     }
 
     @Override
