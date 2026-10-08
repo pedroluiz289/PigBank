@@ -60,6 +60,7 @@
     --cor-icone-programa: var(--cor-primaria);
 
     --cor-titulo-documento: var(--cinza-900);
+    --cor-tipo-conta-documento: var(--cinza-500);
     --cor-data-emissao-documento: var(--cinza-500);
     --cor-titular-documento: var(--cinza-500);
 
@@ -337,12 +338,12 @@
 }
 
 #logo > span {
-    font-size: 55px;
+    font-size: 65px;
     color: var(--cor-icone-programa);
 }
 
 #titulo-programa {
-    font-size: 45px;
+    font-size: 55px;
     color: var(--cor-titulo-programa);
 }
 
@@ -359,6 +360,12 @@
     font-size: 13px;
     margin-top: 2px;
     color: var(--cor-data-emissao-documento);
+}
+
+#tipo {
+    font-size: 13px;
+    margin-top: 2px;
+    color: var(--cor-tipo-conta-documento);
 }
 
 #data-emissao {
