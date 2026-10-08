@@ -6,9 +6,37 @@
     <link rel="stylesheet" th:href="@{/css/poupanca/simulacao.css}">
     <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <script th:src="@{/js/poupanca/simulacao.js}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>PigBank - Simulacao</title>
 </head>
-<body>
-    
+<body class="body-container">
+    <main class="main-container">
+        <header>
+            <div class="header-topo">
+                <a class="botao-voltar" th:href="@{/poupanca}">
+                    <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
+                    <span>Voltar</span>
+                </a>
+                <h1 class="header-titulo">Simulador de Rendimentos</h1>
+                <div style="width: 80px;"></div>
+            </div>
+        </header>
+        <section id="aporte-mensal">
+            <div id="aporte-mensal-container">
+                <div id="titulo-aporte-mensal">
+                    <h2 id="titulo">Aporte Mensal</h2>
+                    <strong id="valor">R$ 0</strong>
+                </div>
+                <input th:data-saldo="${usuario.saldo}" type="range" min="100" max="5000" step="100" value="100" id="slider-aporte-mensal" oninput="atualizarGraficoSimulacao()">
+            </div>
+            <div id="grafico-aporte-mensal">
+                <canvas id="canvas-grafico"></canvas>
+            </div>
+            <div id="estimativa-aporte-mensal">
+                <p id="titulo-estimativa">Est. em 12 meses:</p>
+                <strong id="valor-estimativa">R$ 0,00</strong>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
