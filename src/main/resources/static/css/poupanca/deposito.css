@@ -23,8 +23,9 @@
 :root {
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    --cor-primaria: #F98FB4;
-    --cor-segundaria: #FCBBD1;
+    --cor-primaria: #6496F7;
+    --cor-segundaria: #8FB3F9;
+    --cor-terciaria: #3878F5;
 
     --cinza-900: #0f172a;
     --cinza-700: #334155;
@@ -43,7 +44,7 @@
 
     --cor-fundo-saldo: var(--cor-primaria);
     --cor-texto-saldo: white;
-    --cor-sombra-fundo-saldo: rgba(249, 143, 180, 0.5);
+    --cor-sombra-fundo-saldo: rgba(100, 150, 247, 0.5);
 
     --cor-icone-mostrar-saldo: var(--cinza-600);
     --cor-fundo-mostrar-saldo: white;
@@ -70,8 +71,8 @@
 
     --cor-fundo-botao-confirmacao: var(--cor-primaria);
     --cor-texto-botao-confirmacao: white;
-    --cor-fundo-botao-confirmacao-hover: #F76496;
-    --cor-sombra-botao-confirmacao-hover: rgba(247, 100, 150, 0.2);
+    --cor-fundo-botao-confirmacao-hover: var(--cor-terciaria);
+    --cor-sombra-botao-confirmacao-hover: rgba(100, 150, 247, 0.2);
 
     --cor-fundo-notificacao-sucesso: #DDFBE6;
     --cor-borda-notificacao-sucesso: #2CA24F;
