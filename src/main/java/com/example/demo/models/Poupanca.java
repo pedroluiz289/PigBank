@@ -30,15 +30,13 @@ public class Poupanca extends ContaBancaria {
 
     @Override
     public void sacar(double valor) {
-        if (valor > 0 && super.getSaldo() >= valor) {
-            double saldoAtual = super.getSaldo();
-            double saidaAtual = super.getSaidas();
+        double saldoAtual = super.getSaldo();
+        double saidaAtual = super.getSaidas();
 
-            super.setSaldo(saldoAtual - valor);
-            super.setSaidas(saidaAtual + valor);
+        super.setSaldo(saldoAtual - valor);
+        super.setSaidas(saidaAtual + valor);
 
-            adicionarTransacao("Saque", valor);
-        }
+        adicionarTransacao("Resgate", valor); 
     }
 
     private void adicionarTransacao(String tipo, double valor) {

@@ -1,23 +1,77 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,edit,logout,payment_arrow_down,person,receipt,receipt_long,trending_up,visibility,visibility_off");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,edit,logout,person,receipt,receipt_long,open_in_new,trending_up,visibility,visibility_off");
 
 :root {
-    --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-    --cor-primaria: #F98FB4;
-    --cor-segundaria: #FCBBD1; 
-    --cor-terciaria: #F76496;
+  --cor-primaria: #F98FB4;
+  --cor-segundaria: #FCBBD1; 
+  --cor-quaternaria: #F76496;
 
-    --cinza-900: #0f172a;
-    --cinza-700: #334155;
-    --cinza-600: #475569;
-    --cinza-500: #64748b;
-    --cinza-300: #C4CAD2;
-    --cinza-200: #e2e8f0;
-    --cinza-100: #f1f5f9;
-    --cinza-50: #f8fafc;
+  --cinza-900: #0f172a;
+  --cinza-700: #334155;
+  --cinza-600: #475569;
+  --cinza-500: #64748b;
+  --cinza-300: #C4CAD2;
+  --cinza-200: #e2e8f0;
+  --cinza-100: #f1f5f9;
+  --cinza-50: #f8fafc;
 
-    --cor-fundo: var(--cinza-50);
+  --cor-fundo: var(--cinza-50);
+  --cor-fundo-cabecalho: white;
+  --cor-sombra-cabecalho: rgba(0, 0, 0, 0.1);
+
+  --cor-fundo-avatar: var(--cor-primaria);
+  --cor-avatar: white;
+
+  --cor-nome-usuario: var(--cinza-900);
+  --cor-saudacoes-texto: var(--cinza-500);
+
+  --cor-botao-acoes-fundo: var(--cinza-100);
+  --cor-botao-acoes-fundo-hover: var(--cinza-200);
+  --cor-botao-acoes: var(--cinza-600);
+  --cor-texto-acao-rapida: var(--cinza-700);
+
+  --cor-fundo-saldo1: var(--cor-segundaria);
+  --cor-fundo-saldo2: var(--cor-primaria);
+  --cor-texto-saldo: white;
+  --cor-sombra-fundo-saldo: rgba(249, 143, 180, 0.5);
+  
+  --cor-icone-mostrar-saldo: var(--cinza-600);
+  --cor-fundo-mostrar-saldo: white;
+  --cor-linha-mostrar-saldo: rgba(255, 255, 255, 0.15);
+
+  --cor-fundo-item: white;
+  --cor-texto-item: var(--cinza-700);
+  --cor-sombra-item: rgba(0, 0, 0, 0.1);
+  --cor-sombra-item-hover: rgba(0, 0, 0, 0.13);
+  --cor-fundo-icone-item: var(--cinza-100);
+  --cor-borda-icone-item: var(--cinza-200);
+  --cor-borda-icone-item-hover: var(--cinza-300);
+  --cor-fundo-icone-item-hover: var(--cinza-200);
+  --cor-icone-item: var(--cinza-500);
+
+  --cor-fundo-extrato: white;
+  --cor-sombra-fundo-extrato: rgba(0, 0, 0, 0.1);
+  --cor-titulo-extrato: var(--cinza-900);
+  --cor-texto-extrato-completo: var(--cor-quaternaria); 
+
+  --cor-titulo-detalhes-extrato: #1e293b;
+  --cor-texto-detalhes-extrato: #94a3b8;
+
+  --cor-fundo-icone-extrato: var(--cinza-100);
+  --cor-icone-extrato: var(--cinza-600);
+
+  --cor-fundo-icone-transacao-vazia: var(--cinza-100);
+  --cor-icone-transacao-vazia: var(--cinza-600);
+
+  --cor-titulo-transacao-vazia: var(--cinza-700);
+  --cor-texto-transacao-vazia: var(--cinza-500);
+
+  --cor-linha-item-extrato: var(--cinza-200);
+
+  --cor-valor-deposito-extrato: #00A84E;
+  --cor-valor-resgate-extrato: #E72F4B;
 }
 
 * {
@@ -32,4 +86,292 @@ body {
     min-height: 100vh;
     display: flex;
     justify-content: center;
+}
+
+#main-container {
+    width: 100%;
+    padding: 24px;
+    max-width: 825px;
+}
+
+#cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--cor-fundo-cabecalho);
+    padding: 16px 24px;
+    border-radius: 16px;
+    box-shadow: 0px 1px 3px var(--cor-sombra-cabecalho);
+    margin-bottom: 24px;
+}
+
+#usuario-informacoes,
+#usuario-acoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--cor-fundo-avatar);
+    color: var(--cor-avatar);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#avatar-icone {
+    font-size: 32px;
+}
+
+#saudacoes {
+    font-size: 14px;
+    color: var(--cor-saudacoes-texto);
+}
+
+#usuario-nome {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cor-nome-usuario);
+}
+
+.acoes-botao {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-decoration: none;
+    background-color: var(--cor-botao-acoes-fundo);
+    color: var(--cor-botao-acoes);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.acoes-botao:hover {
+    background-color: var(--cor-botao-acoes-fundo-hover);
+}
+
+#dashboard {
+    display: grid;
+    gap: 24px;
+}
+
+#saldo-container {
+    padding: 28px;
+    border-radius: 20px;
+    background-image: linear-gradient(135deg, var(--cor-fundo-saldo2) 0%, var(--cor-fundo-saldo1) 100%);
+    color: var(--cor-texto-saldo);
+    box-shadow: 0px 5px 10px var(--cor-sombra-fundo-saldo);
+}
+
+#saldo-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#saldo-titulo {
+    font-weight: 600;
+}
+
+#botao-mostrar-saldo {
+    border: none;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 12px;
+    gap: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: var(--cor-icone-mostrar-saldo);
+    background-color: var(--cor-fundo-mostrar-saldo);
+}
+
+#saldo-valor-container {
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--cor-linha-mostrar-saldo);
+}
+
+#saldo-detalhes {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.detalhes-titulo {
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+#acoes-rapidas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
+}
+
+.item-acao {
+    background-color: var(--cor-fundo-item);
+    padding: 16px 8px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--cor-texto-item);
+    box-shadow: 0px 1px 3px var(--cor-sombra-item);
+    transition: box-shadow 0.2s, transform 0.2s ease;
+}
+
+.item-acao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 8px 15px var(--cor-sombra-item-hover);
+
+    .item-icone {
+        border: 2px solid var(--cor-borda-icone-item-hover);
+    }
+}
+
+.item-icone {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--cor-borda-icone-item);
+    color: var(--cor-icone-item);
+    background-color: var(--cor-fundo-icone-item);
+    transition: border 0.2s ease;
+}
+
+.item-icone > span {
+    font-size: 30px;
+}
+
+#extrato {
+    background-color: var(--cor-fundo-extrato);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0px 1px 3px var(--cor-sombra-fundo-extrato);
+}
+
+#extrato-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#extrato-titulo {
+    font-size: 18px;
+    color: var(--cor-titulo-extrato);
+}
+
+#extrato-link {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--cor-texto-extrato-completo);
+}
+
+#extrato-link:hover {
+    text-decoration: underline;
+}
+
+#lista-transacoes {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.trasacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+}
+
+.transacao-linha {
+    border-bottom: 1px solid var(--cor-linha-item-extrato);
+}
+
+.informacoes-transacao {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icone-trasacao {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: var(--cor-fundo-icone-extrato);
+    color: var(--cor-icone-extrato);
+}
+
+.detalhes-transacao h4 {
+    font-size: 16px;
+    color: var(--cor-titulo-detalhes-extrato);
+}
+
+.detalhes-transacao p {
+    font-size: 14px;
+    color: var(--cor-texto-detalhes-extrato);
+}
+
+#transacao-vazia {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px 0px 12px 0px;
+}
+
+#transacao-vazia-icone {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--cor-fundo-icone-transacao-vazia);
+    color: var(--cor-icone-transacao-vazia);
+    margin-bottom: 5px;
+}
+
+#transacao-vazia-icone > span {
+    font-size: 36px;
+}
+
+#transacao-vazia-titulo {
+    font-size: 16px;
+    color: var(--cor-titulo-transacao-vazia);
+}
+
+#transacao-vazia-texto {
+    font-size: 14px;
+    color: var(--cor-texto-transacao-vazia);
+}
+
+.valor-deposito {
+    color: var(--cor-valor-deposito-extrato);
+}
+
+.valor-resgate {
+    color: var(--cor-valor-resgate-extrato);
 }
