@@ -4,9 +4,9 @@
 :root {
   --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
-  --cor-primaria: #F98FB4;
-  --cor-segundaria: #FCBBD1; 
-  --cor-quaternaria: #F76496;
+  --cor-primaria: #6496F7;
+  --cor-segundaria: #8FB3F9; 
+  --cor-terciaria: #3878F5;
 
   --cinza-900: #0f172a;
   --cinza-700: #334155;
@@ -35,7 +35,7 @@
   --cor-fundo-saldo1: var(--cor-segundaria);
   --cor-fundo-saldo2: var(--cor-primaria);
   --cor-texto-saldo: white;
-  --cor-sombra-fundo-saldo: rgba(249, 143, 180, 0.5);
+  --cor-sombra-fundo-saldo: rgba(100, 150, 247, 0.5);
   
   --cor-icone-mostrar-saldo: var(--cinza-600);
   --cor-fundo-mostrar-saldo: white;
@@ -54,7 +54,7 @@
   --cor-fundo-extrato: white;
   --cor-sombra-fundo-extrato: rgba(0, 0, 0, 0.1);
   --cor-titulo-extrato: var(--cinza-900);
-  --cor-texto-extrato-completo: var(--cor-quaternaria); 
+  --cor-texto-extrato-completo: var(--cor-terciaria); 
 
   --cor-titulo-detalhes-extrato: #1e293b;
   --cor-texto-detalhes-extrato: #94a3b8;
