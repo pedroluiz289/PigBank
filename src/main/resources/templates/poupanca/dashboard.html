@@ -43,8 +43,8 @@
                 </div>
                 <div id="saldo-detalhes">
                     <div class="detalhes-item">
-                        <p class="detalhes-titulo">Rendimento</p>
-                        <strong id="valor-rendimento">R$ 0.00</strong>
+                        <p class="detalhes-titulo">Rendimento por minuto</p>
+                        <strong id="valor-rendimento" th:text="'+ R$ ' + ${#numbers.formatDecimal(usuario.saldo * usuario.taxaRendimento, 1, 2)}">R$ 0.00</strong>
                     </div>
                 </div>
             </section>
@@ -83,15 +83,17 @@
                     <div id="lista-transacoes">
                         <div class="trasacao" th:each="t, quantidade: ${usuario.transacoes}" th:if="${quantidade.count < 6}" th:classappend="${quantidade.count == 5 or quantidade.last} ? '' : 'transacao-linha'">
                             <div class="informacoes-transacao">
-                                <div class="icone-trasacao">
-                                    <span th:text="${t.tipo == 'Deposito'} ? 'account_balance' : 'open_in_new'" class="material-symbols-outlined">person</span>
+                                <div class="icone-trasacao" th:switch="${t.tipo}">
+                                    <span th:case="'Deposito'" class="material-symbols-outlined">account_balance</span>
+                                    <span th:case="'Resgate'" class="material-symbols-outlined">open_in_new</span>
+                                    <span th:case="'Rendimento'" class="material-symbols-outlined">savings</span>
                                 </div>
                                 <div class="detalhes-transacao">
                                     <h4 th:text="${t.tipo}">Placeholder</h4>
                                     <p th:text="${@dateUtils.tempoRelativo(t.data)}">00-00-00 00:00:00</p>
                                 </div>
                             </div>
-                            <strong th:classappend="${t.tipo == 'Deposito'} ? 'valor-deposito' : 'valor-resgate'" th:text="${t.tipo == 'Deposito'} ? '+ R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)} : '- R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)}"></strong>
+                            <strong th:classappend="${t.tipo == 'Deposito' || t.tipo == 'Rendimento'} ? 'valor-deposito' : 'valor-resgate'" th:text="${t.tipo == 'Deposito' || t.tipo == 'Rendimento'} ? '+ R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)} : '- R$ ' + ${#numbers.formatDecimal(t.valor, 1, 2)}"></strong>
                         </div>
                     </div>
                 </th:block>

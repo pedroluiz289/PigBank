@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" th:href="@{/images/favicon-conta-poupanca.ico}" type="image/x-icon">
-    <link rel="stylesheet" th:href="@{/css/poupanca/editar.css}">
+    <link rel="stylesheet" th:href="@{/css/poupanca/editarperfil.css}">
     <script th:src="@{/js/poupanca/editarperfil.js}" defer></script>
     <title>PigBank - Editar Perfil</title>
 </head>
@@ -33,7 +33,7 @@
                     <label class="nome-elemento" for="agencia">Agência e Conta</label>
                     <div class="container-input">
                         <span class="material-symbols-outlined icone-elemento">account_balance</span>
-                        <input class="input-elemento" type="text" name="agencia" id="nome-input" th:value="${'Agencia: ' + #numbers.formatInteger(usuario.agencia, 4) + ' Conta: ' + usuario.conta}" disabled>
+                        <input class="input-elemento" type="text" name="agencia" id="agencia" th:value="${'Agencia: ' + #numbers.formatInteger(usuario.agencia, 4) + ' Conta: ' + usuario.conta}" disabled>
                     </div>
                 </div>
             </div>

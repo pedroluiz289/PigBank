@@ -1,9 +1,13 @@
 package com.example.demo.service;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.response.poupanca.PoupancaRespostaDepositoDTO;
 import com.example.demo.dto.response.poupanca.PoupancaRespostaResgateDTO;
+import com.example.demo.dto.response.poupanca.PoupancaRespostaSalvarDTO;
 import com.example.demo.exception.SaldoInsuficienteException;
 import com.example.demo.models.Poupanca;
 
@@ -29,5 +33,34 @@ public class PoupancaService {
 
         usuario.sacar(valor);
         return new PoupancaRespostaResgateDTO(true, "Resgate de R$" + String.format("%.2f", valor) + " foi realizado com sucesso!", usuario.getSaldo());
+    }
+
+    public PoupancaRespostaSalvarDTO salvar(Poupanca usuario, String nome) {
+        if (nome.isEmpty() || nome.isBlank()) {
+            throw new IllegalArgumentException("O campo do nome não pode estar vazio ou conter somente espaço.");
+        }
+
+        usuario.setNome(nome);
+        return new PoupancaRespostaSalvarDTO(true, "O nome foi alterado com sucesso");
+    }
+
+    public void atualizarRendimento(Poupanca usuario) {
+        if (usuario.getSaldo() <= 0) {
+            return;
+        }
+
+        LocalDateTime agora = LocalDateTime.now();
+
+        long tempoDecorridos = Duration.between(usuario.getUltimaAtualizacao(), agora).toMinutes();
+
+        if (tempoDecorridos > 0) {
+            for (int i = 0; i < tempoDecorridos; i++) {
+                double rendimento = usuario.getSaldo() * usuario.getTaxaRendimento();
+    
+                usuario.aplicarRendimento(rendimento);
+            }
+
+            usuario.setUltimaAtualizacao(usuario.getUltimaAtualizacao().plusMinutes(tempoDecorridos));
+        }
     }
 }
