@@ -1,3 +1,4 @@
+const aviso = document.getElementById("aviso");
 let visivel = localStorage.getItem("saldoVisivel") !== "false";
 
 function mostrarSaldo(botao) {
@@ -27,6 +28,19 @@ function alterarEstado(botao) {
     visivel = !visivel;
     localStorage.setItem("saldoVisivel", visivel);
     mostrarSaldo(botao);
+}
+
+function abrirAviso() {
+    aviso.showModal();
+}
+
+function fecharAviso() {
+    aviso.close();
+}
+
+function confirmarSaida(rota) {
+    fecharAviso();
+    window.location.href = rota;
 }
 
 window.addEventListener("DOMContentLoaded", () => {

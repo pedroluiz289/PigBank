@@ -1,12 +1,12 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,edit,logout,payment_arrow_down,person,receipt,receipt_long,visibility,visibility_off");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=account_balance,edit,logout,payment_arrow_down,person,receipt,receipt_long,visibility,visibility_off,warning");
 
 :root {
   --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
   --cor-primaria: #F98FB4;
   --cor-segundaria: #FCBBD1; 
-  --cor-quaternaria: #F76496;
+  --cor-terciaria: #F76496;
 
   --cinza-900: #0f172a;
   --cinza-700: #334155;
@@ -54,7 +54,7 @@
   --cor-fundo-extrato: white;
   --cor-sombra-fundo-extrato: rgba(0, 0, 0, 0.1);
   --cor-titulo-extrato: var(--cinza-900);
-  --cor-texto-extrato-completo: var(--cor-quaternaria); 
+  --cor-texto-extrato-completo: var(--cor-terciaria); 
 
   --cor-titulo-detalhes-extrato: #1e293b;
   --cor-texto-detalhes-extrato: #94a3b8;
@@ -72,6 +72,21 @@
 
   --cor-valor-deposito-extrato: #00A84E;
   --cor-valor-saque-extrato: #E72F4B;
+
+  --cor-backdrop-aviso: rgba(15, 23, 42, 0.5);
+  --cor-borda-aviso: var(--cor-terciaria);
+
+  --cor-fundo-icone-aviso: #FEF3C7;
+  --cor-icone-aviso: #D97706;
+
+  --cor-descricao-aviso: var(--cinza-500);
+  --cor-fundo-botao-sair: #E72F4B;
+  --cor-fundo-botao-sair-hover: #BE123C;
+  --cor-texto-botao-sair: white;
+
+  --cor-fundo-botao-cancelar: white;
+  --cor-fundo-botao-cancelar-hover: var(--cinza-200);
+  --cor-borda-botao-cancelar: var(--cinza-300);
 }
 
 * {
@@ -145,6 +160,8 @@ body {
     text-decoration: none;
     background-color: var(--cor-botao-acoes-fundo);
     color: var(--cor-botao-acoes);
+    border: none;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -374,4 +391,81 @@ body {
 
 .valor-saque {
     color: var(--cor-valor-saque-extrato);
+}
+
+
+#aviso {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 24px;
+    border: 2px solid var(--cor-borda-aviso);
+    border-radius: 15px;
+}
+
+#aviso::backdrop {
+    background-color: var(--cor-backdrop-aviso);
+    backdrop-filter: blur(4px);
+}
+
+#icone-aviso {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    border-radius: 50%;
+    background-color: var(--cor-fundo-icone-aviso);
+}
+
+#icone {
+    color: var(--cor-icone-aviso);
+    font-size: 32px;
+}
+
+#titulo-aviso {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#descricao-aviso {
+    margin-top: 10px;
+    color: var(--cor-descricao-aviso);
+    font-size: 14px;
+}
+
+#botoes-aviso {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.botoes {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#botao-sair {
+    border: none;
+    background-color: var(--cor-fundo-botao-sair);
+    color: var(--cor-texto-botao-sair);
+}
+
+#botao-sair:hover {
+    background-color: var(--cor-fundo-botao-sair-hover);
+}
+
+#botao-fechar {
+    background-color: var(--cor-fundo-botao-cancelar);
+    border: 1px solid var(--cor-borda-botao-cancelar);
+}
+
+#botao-fechar:hover {
+    background-color: var(--cor-fundo-botao-cancelar-hover);
 }
