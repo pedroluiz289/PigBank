@@ -54,12 +54,9 @@ public class PoupancaService {
         long tempoDecorridos = Duration.between(usuario.getUltimaAtualizacao(), agora).toMinutes();
 
         if (tempoDecorridos > 0) {
-            for (int i = 0; i < tempoDecorridos; i++) {
-                double rendimento = usuario.getSaldo() * usuario.getTaxaRendimento();
-    
-                usuario.aplicarRendimento(rendimento);
-            }
+            double rendimento = usuario.getSaldo() * usuario.getTaxaRendimento();
 
+            usuario.aplicarRendimento(rendimento);
             usuario.setUltimaAtualizacao(usuario.getUltimaAtualizacao().plusMinutes(tempoDecorridos));
         }
     }

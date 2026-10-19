@@ -3,17 +3,22 @@ let visivel = localStorage.getItem("saldoVisivelPoupanca") !== "false";
 
 function mostrarSaldo(botao) {
     const valor = botao.dataset.saldo;
+    const taxa = botao.dataset.taxa;
+
     const valorSaldo = document.getElementById("saldo-valor");
+    const valorRendimento = document.getElementById("valor-rendimento");
 
     const icone = document.getElementById("mostrar-saldo-icone");
     const textoIcone = document.getElementById("texto-icone");
 
     if (!visivel) {
         valorSaldo.innerText = "••••••••";
+        valorRendimento.innerText = "••••••••";
         icone.innerText = "visibility_off";
         textoIcone.innerText = "Mostrar";
     } else {
         valorSaldo.innerText = "R$ " + Number(valor).toFixed(2).replace(".", ",");
+        valorRendimento.innerText = "R$ " + Number(valor * taxa).toFixed(2).replace(".", ",");
         icone.innerText = "visibility";
         textoIcone.innerText = "Ocultar";
     }
