@@ -18,7 +18,7 @@ function mostrarSaldo(botao) {
         textoIcone.innerText = "Mostrar";
     } else {
         valorSaldo.innerText = "R$ " + Number(valor).toFixed(2).replace(".", ",");
-        valorRendimento.innerText = "R$ " + Number(valor * taxa).toFixed(2).replace(".", ",");
+        valorRendimento.innerText = "+ R$ " + Number(valor * taxa).toFixed(2).replace(".", ",");
         icone.innerText = "visibility";
         textoIcone.innerText = "Ocultar";
     }

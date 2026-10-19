@@ -23,9 +23,9 @@ function filtrarTransacoes() {
 
         if (tipoAtual === "todos") {
             filtroAchado = true;
-        } else if (tipoAtual === "saque" && tipo === "saque") {
+        } else if (tipoAtual === "resgate" && tipo === "resgate") {
             filtroAchado = true;
-        } else if (tipoAtual === "deposito" && tipo === "deposito") {
+        } else if ((tipoAtual === "deposito" && tipo === "deposito") || tipoAtual === "deposito" && tipo === "rendimento") {
             filtroAchado = true;
         }
 
