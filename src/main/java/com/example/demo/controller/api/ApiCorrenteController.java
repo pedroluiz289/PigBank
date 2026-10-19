@@ -2,6 +2,7 @@ package com.example.demo.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +61,7 @@ public class ApiCorrenteController {
         }
     }
 
-    @PostMapping("/salvar")
+    @PatchMapping("/salvar")
     public ResponseEntity<?> salvar(@RequestBody CorrenteSalvarDTO dto, HttpSession session) {
         Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
 

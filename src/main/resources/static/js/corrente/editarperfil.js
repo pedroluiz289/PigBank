@@ -51,7 +51,7 @@ document.getElementById("card-principal").addEventListener("submit", function(ev
     };
 
     fetch("/corrente/salvar", {
-        method: "POST",
+        method: "PATCH",
         headers: {
             "Content-Type": "application/json"
         },
