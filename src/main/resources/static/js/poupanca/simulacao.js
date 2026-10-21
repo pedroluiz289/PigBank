@@ -10,10 +10,9 @@ function inicializarGraficoSimulacao() {
     grafico = new Chart(canvas.getContext("2d"), {
         type: "line",
         data: {
-            labels: ["Mês 1", "Mês 3", "Mês 6", "Mês 9", "Mês 12"],
+            labels: ["Mês 1", "Mês 2", "Mês 3", "Mês 4", "Mês 5", "Mês 6", "Mês 7", "Mês 8", "Mês 9", "Mês 10", "Mês 11", "Mês 12"],
             datasets: [{
                 label: "Saldo Simulado",
-                data: [13000, 14200, 16000, 17800, 19120],
                 borderColor: "#0066b3",
                 backgroundColor: "rgba(0, 102, 179, 0.08)",
                 fill: true,
@@ -23,10 +22,20 @@ function inicializarGraficoSimulacao() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
+            plugins: { 
+                legend: { 
+                    display: false 
+                } 
+            },
             scales: {
-                x: { grid: { display: false } },
-                y: { grid: { color: "#f1f5f9" } }
+                y: { 
+                    ticks: { 
+                        callback: value => `R$ ${value.toLocaleString("pt-BR", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        })}`
+                    } 
+                }
             }
         }
     });
@@ -36,20 +45,24 @@ function inicializarGraficoSimulacao() {
 
 function atualizarGraficoSimulacao() {
     const valorSlider = parseInt(document.getElementById("slider-aporte-mensal").value);
-    document.getElementById("valor").textContent = `R$ ${valorSlider.toLocaleString("pt-BR")}`;
+    const valorAporteMensal = document.getElementById("valor");
+    const valorEstimativa = document.getElementById("valor-estimativa");
 
-    let base = document.getElementById("slider-aporte-mensal").dataset.saldo;
-    let novoDado = [base];
+    valorAporteMensal.textContent = `R$ ${valorSlider.toLocaleString("pt-BR")}`;
+
+    let base = parseFloat(document.getElementById("slider-aporte-mensal").dataset.saldo);
+    let valor = base;
+    let novoDado = [];
 
     for (let i = 1; i <= 12; i++) {
-        base = (base + valorSlider) * 1.005;
-
-        if ([2, 5, 8, 11].includes(i)) {
-            novoDado.push(Math.round(base));
-        }
+        valor = (valor + valorSlider) * 1.01;
+        novoDado.push(parseFloat(valor));
     }
 
-    document.getElementById("valor-estimativa").textContent = `R$ ${novoDado[novoDado.length - 1].toLocaleString("pt-BR", {minimumFractionDigits: 2})}`;
+    valorEstimativa.textContent = `R$ ${novoDado[novoDado.length - 1].toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })}`;
 
     if (grafico) {
         grafico.data.datasets[0].data = novoDado;
