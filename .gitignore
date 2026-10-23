@@ -37,3 +37,4 @@ build/
 mvnw
 mvnw.cmd
 .gradle/
+src/main/resources/application-dev.properties
