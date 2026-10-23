@@ -1,0 +1,45 @@
+@media screen and (max-width: 768px) {
+    #fundo-index {
+        padding: 0px 25px;
+        background-position: center center;
+    }
+
+    #icone-index {
+        font-size: 75px;
+    }
+
+    #titulo-index {
+        font-size: 34px;
+        margin-bottom: 12px;
+    }
+
+    #subtitulo-index {
+        font-size: 15px;
+    }
+
+    .botao {
+        padding: 20px 20px;
+        font-size: 16px;
+        transition: none;
+    }
+
+    .botao:hover,
+    #botao-conta-poupanca:hover {
+        border-color: var(--cor-borda-botao);
+        box-shadow: none;
+    }
+
+    .botao:active {
+        border-color: var(--cor-borda-botao-conta-corrente);
+    }
+
+    #botao-conta-poupanca:active {
+        border-color: var(--cor-borda-botao-conta-poupanca);
+    }
+
+    #aviso {
+        text-align: center;
+        line-height: 1.7;
+        font-size: 16px;
+    }
+}

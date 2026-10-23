@@ -38,7 +38,7 @@
 }
 
 #fundo-index {
-    background-image: url("../images/fundo.png");
+    background-image: url("../../images/fundo.png");
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 100vh;
