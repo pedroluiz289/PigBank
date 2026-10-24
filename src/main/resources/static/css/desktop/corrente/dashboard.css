@@ -255,7 +255,7 @@ body {
     box-shadow: 0px 8px 15px var(--cor-sombra-item-hover);
 
     .item-icone {
-        border: 2px solid var(--cor-borda-icone-item-hover);
+        border-color: var(--cor-borda-icone-item-hover);
     }
 }
 
@@ -316,11 +316,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 12px;
 }
 
 .transacao-linha {
     border-bottom: 1px solid var(--cor-linha-item-extrato);
+    padding-bottom: 12px;
 }
 
 .informacoes-transacao {
