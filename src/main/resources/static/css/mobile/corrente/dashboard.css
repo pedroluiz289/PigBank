@@ -65,7 +65,7 @@
     }
 
     #extrato-titulo {
-        font-size: 20px;
+        font-size: 18px;
         text-align: center;
     }
 
@@ -79,5 +79,9 @@
 
     .transacao-linha {
         padding-bottom: 20px;
+    }
+
+    #transacao-vazia {
+        padding: 0px;
     }
 }

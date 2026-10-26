@@ -1,0 +1,51 @@
+@media screen and (max-width: 768px) {
+    label {
+        font-size: 15px;
+    }
+
+    #valores-rapidos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .botao-rapido {
+        font-size: 16px;
+        padding: 12px;
+        transition: none;
+    }
+
+    .botao-rapido:hover {
+        border-color: var(--cor-borda-acao-rapida);
+    }
+
+    .botao-rapido:active {
+        border-color: var(--cor-borda-acao-rapida-hover);
+    }
+
+    #botoes-container {
+        flex-direction: column-reverse;
+    }
+
+    #botao-deposito, #botao-limpar {
+        padding: 20px;
+        font-size: 18px;
+        transition: none;
+    }
+
+    #botao-limpar:hover {
+        border-color: var(--cor-borda-botao-limpar);
+    }
+
+    #botao-limpar:active {
+        border-color: var(--cor-borda-botao-limpar-hover);
+    }
+
+    #botao-deposito:hover {
+        background-color: var(--cor-fundo-botao-confirmacao);
+        box-shadow: none;
+    }
+
+    #botao-deposito:active {
+        background-color: var(--cor-fundo-botao-confirmacao-hover);
+    }
+}
