@@ -84,4 +84,54 @@
     #transacao-vazia {
         padding: 0px;
     }
+
+    #aviso {
+        min-width: 80%;
+    }
+
+    #icone-aviso {
+        width: 72px;
+        height: 72px;
+    }
+
+    #icone {
+        font-size: 36px;
+    }
+
+    #titulo-aviso {
+        font-size: 22px;
+    }
+
+    #descricao-aviso {
+        font-size: 15px;
+        text-align: center;
+    }
+
+    #botoes-aviso {
+        margin-top: 22px;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .botoes {
+        font-size: 16px;
+        padding: 16px;
+        transition: none;
+    }
+
+    #botao-sair:hover {
+        background-color: var(--cor-fundo-botao-sair);
+    }
+
+    #botao-sair:active {
+        background-color: var(--cor-fundo-botao-sair-hover);
+    }
+
+    #botao-fechar:hover {
+        background-color: var(--cor-fundo-botao-cancelar);
+    }
+
+    #botao-fechar:active {
+        background-color: var(--cor-fundo-botao-cancelar-hover);
+    }
 }
