@@ -1,4 +1,16 @@
 @media screen and (max-width: 768px) {
+    .botao-voltar {
+        transition: none;
+    }
+
+    .botao-voltar:hover {
+        color: var(--cor-texto-voltar);
+    }
+
+    .botao-voltar:active {
+        color: var(--cor-texto-voltar-hover);
+    }
+
     label {
         font-size: 15px;
     }
@@ -47,5 +59,9 @@
 
     #botao-deposito:active {
         background-color: var(--cor-fundo-botao-confirmacao-hover);
+    }
+
+    #notificacao {
+        max-width: 90%;
     }
 }
