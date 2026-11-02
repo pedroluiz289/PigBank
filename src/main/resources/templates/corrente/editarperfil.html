@@ -18,7 +18,7 @@
                     <span>Voltar</span>
                 </a>
                 <h1 class="header-titulo">Editar Perfil</h1>
-                <div style="width: 80px;"></div>
+                <div id="header-espaco"></div>
             </div>
         </header>
         <form id="card-principal" method="post">
@@ -34,12 +34,15 @@
                     <label class="nome-elemento" for="agencia">Agência e Conta</label>
                     <div class="container-input">
                         <span class="material-symbols-outlined icone-elemento">account_balance</span>
-                        <input class="input-elemento" type="text" name="agencia" id="nome-input" th:value="${'Agencia: ' + #numbers.formatInteger(usuario.agencia, 4) + ' Conta: ' + usuario.conta}" disabled>
+                        <input class="input-elemento" type="text" name="agencia" id="agencia-input" th:value="${'Agencia: ' + #numbers.formatInteger(usuario.agencia, 4) + ' Conta: ' + usuario.conta}" disabled>
                     </div>
                 </div>
             </div>
             <div id="botao-container">
-                <button id="botao-salvar" type="submit">Salvar Alterações</button>
+                <button id="botao-salvar" type="submit">
+                    <span class="material-symbols-outlined">save</span>
+                    <span>Salvar Alterações</span>
+                </button>
             </div>
         </form>
         <dialog id="notificacao">
