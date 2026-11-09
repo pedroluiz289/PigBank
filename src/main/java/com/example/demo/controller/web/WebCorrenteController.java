@@ -10,10 +10,10 @@ import com.example.demo.models.Corrente;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping({"/corrente", "/corrente/"})
+@RequestMapping("/corrente")
 public class WebCorrenteController {
 
-    @GetMapping
+    @GetMapping({"", "/"})
     public String dashboard(Model model, HttpSession session) {
         Corrente usuario = (Corrente) session.getAttribute("contaCorrente");
 

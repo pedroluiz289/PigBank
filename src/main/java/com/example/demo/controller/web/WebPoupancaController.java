@@ -1,6 +1,5 @@
 package com.example.demo.controller.web;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +11,15 @@ import com.example.demo.service.PoupancaService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping({"/poupanca", "/poupanca/"})
+@RequestMapping("/poupanca")
 public class WebPoupancaController {
-    @Autowired
-    private PoupancaService poupancaService;
+    private final PoupancaService poupancaService;
 
-    @GetMapping
+    public WebPoupancaController(PoupancaService poupancaService) {
+        this.poupancaService = poupancaService;
+    }
+
+    @GetMapping({"", "/"})
     public String dashboard(Model model, HttpSession session) {
         Poupanca usuario = (Poupanca) session.getAttribute("contaPoupanca");
 

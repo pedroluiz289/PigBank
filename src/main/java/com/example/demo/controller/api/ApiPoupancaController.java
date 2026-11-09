@@ -1,6 +1,5 @@
 package com.example.demo.controller.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,8 +21,11 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @RequestMapping({"/poupanca", "/poupanca/"})
 public class ApiPoupancaController {
-    @Autowired
-    private PoupancaService poupancaService;
+    private final PoupancaService poupancaService;
+
+    public ApiPoupancaController(PoupancaService poupancaService) {
+        this.poupancaService = poupancaService;
+    }
 
     @PostMapping("/depositar")
     public ResponseEntity<?> depositar(@RequestBody PoupancaDepositoDTO dto, HttpSession session) {

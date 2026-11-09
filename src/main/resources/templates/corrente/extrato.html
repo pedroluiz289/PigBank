@@ -12,18 +12,16 @@
 </head>
 <body class="body-container">
     <main class="main-container">
-        <header>
-            <div class="header-topo">
-                <a class="botao-voltar" th:href="@{/corrente}">
-                    <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
-                    <span>Voltar</span>
-                </a>
-                <h1 class="header-titulo">Extrato da Conta</h1>
-                <button id="botao-exportar" type="button" onclick="gerarPDF()">
-                    <span class="material-symbols-outlined">download</span>
-                    <span>Exportar</span>
-                </button>
-            </div>
+        <header class="header-topo">
+            <a class="botao-voltar" th:href="@{/corrente}">
+                <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
+                <span>Voltar</span>
+            </a>
+            <h1 class="header-titulo">Extrato da Conta</h1>
+            <button id="botao-exportar" type="button" onclick="gerarPDF()">
+                <span id="icone-exportar" class="material-symbols-outlined">download</span>
+                <span>Exportar</span>
+            </button>
         </header>
         <section id="resumo-financas">
             <div class="card-resumo">

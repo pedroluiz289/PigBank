@@ -1,0 +1,59 @@
+@media screen and (max-width: 768px) {
+    .header-topo {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .botao-voltar {
+        font-size: 16px;
+        transition: none;
+    }
+
+    .botao-voltar:hover, #botao-exportar:hover {
+        color: var(--cor-texto-voltar);
+    }
+
+    .botao-voltar:active, #botao-exportar:active {
+        color: var(--cor-texto-voltar-hover);
+    }
+
+    #icone-voltar {
+        font-size: 24px;
+    }
+
+    #botao-exportar {
+        font-size: 16px;
+        transition: none;
+        order: 2;
+    }
+
+    #icone-exportar {
+        font-size: 32px;
+    }
+
+    .header-titulo {
+        font-size: 28px;
+        order: 3;
+    }
+
+    #botao-exportar {
+        order: 2;
+    }
+
+    #resumo-financas {
+        grid-template-columns: none;
+        gap: 16px;
+    }
+
+    .card-titulo {
+        margin-bottom: 6px;
+    }
+
+    .card-valor {
+        font-size: 22px;
+    }
+
+    .tag {
+        width: 100%;
+    }
+}

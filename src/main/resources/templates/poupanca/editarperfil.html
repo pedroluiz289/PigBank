@@ -11,15 +11,13 @@
 </head>
 <body class="body-container">
     <main class="main-container">
-        <header>
-            <div class="header-topo">
-                <a class="botao-voltar" th:href="@{/poupanca}">
-                    <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
-                    <span>Voltar</span>
-                </a>
-                <h1 class="header-titulo">Editar Perfil</h1>
-                <div style="width: 80px;"></div>
-            </div>
+        <header class="header-topo">
+            <a class="botao-voltar" th:href="@{/poupanca}">
+                <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
+                <span>Voltar</span>
+            </a>
+            <h1 class="header-titulo">Editar Perfil</h1>
+            <div style="width: 80px;"></div>
         </header>
         <form id="card-principal" method="post">
             <div id="grid-elementos">
@@ -39,7 +37,10 @@
                 </div>
             </div>
             <div id="botao-container">
-                <button id="botao-salvar" type="submit">Salvar Alterações</button>
+                <button id="botao-salvar" type="submit">
+                    <span class="material-symbols-outlined">save</span>
+                    <span>Salvar Alterações</span>
+                </button>
             </div>
         </form>
         <dialog id="notificacao">

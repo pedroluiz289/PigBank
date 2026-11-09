@@ -5,6 +5,9 @@
     --fonte: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
     --cor-primaria: #F98FB4;
+    --cor-segundaria: #F76496;
+    --cor-terciaria: #6496F7;
+    --cor-quaternaria: #3878F5;
 
     --cinza-900: #0f172a;
     --cinza-500: #64748b;
@@ -14,20 +17,24 @@
 
     --cor-fundo: var(--cinza-50);
 
-    --cor-icone: var(--cor-primaria);
+    --cor-icone-rosa: var(--cor-primaria);
+    --cor-icone-azul: var(--cor-terciaria);
     --cor-titulo-logo: var(--cinza-900);
 
     --cor-fundo-card: white;
     --cor-borda-card: var(--cinza-200);
     --cor-sombra-card: rgba(0, 0, 0, 0.1);
 
-    --cor-codigo-erro: var(--cinza-200);
+    --cor-codigo-erro: var(--cinza-500);
     --cor-titulo: var(--cinza-900);
     --cor-descricao: var(--cinza-500);
 
-    --cor-botao-voltar: var(--cinza-100);
-    --cor-botao-voltar-hover: var(--cinza-200);
-    --cor-texto-botao-voltar: var(--cinza-900);
+    --cor-botao-voltar-rosa: var(--cor-primaria);
+    --cor-botao-voltar-rosa-hover: var(--cor-segundaria);
+
+    --cor-botao-voltar-azul: var(--cor-terciaria);
+    --cor-botao-voltar-azul-hover: var(--cor-quaternaria);
+    --cor-texto-botao-voltar: white;
 }
 
 * {
@@ -63,8 +70,15 @@ body {
 }
 
 #logo-icone {
-    color: var(--cor-icone);
     font-size: 48px;
+}
+
+.azul {
+    color: var(--cor-icone-azul);
+}
+
+.rosa {
+    color: var(--cor-icone-rosa);
 }
 
 #logo-titulo {
@@ -93,7 +107,7 @@ body {
 }
 
 #descricao {
-    color: var(--cinza-500);
+    color: var(--cor-descricao);
     margin-bottom: 32px;
 }
 
@@ -107,11 +121,22 @@ body {
     font-weight: bold;
     padding: 12px 24px;
     border-radius: 12px;
-    background-color: var(--cor-botao-voltar);
     color: var(--cor-texto-botao-voltar);
     transition: background-color 0.2s ease-in-out;
 }
 
-#botao-voltar:hover {
-    background-color: var(--cor-botao-voltar-hover);
+.botao-rosa {
+    background-color: var(--cor-botao-voltar-rosa);
+}
+
+.botao-rosa:hover {
+    background-color: var(--cor-botao-voltar-rosa-hover);
+}
+
+.botao-azul {
+    background-color: var(--cor-botao-voltar-azul);
+}
+
+.botao-azul:hover {
+    background-color: var(--cor-botao-voltar-azul-hover);
 }
