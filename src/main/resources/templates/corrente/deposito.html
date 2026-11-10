@@ -11,26 +11,24 @@
 </head>
 <body class="body-container">
     <main class="main-container">
-        <header>
-            <div class="header-topo">
-                <a class="botao-voltar" th:href="@{/corrente}">
-                    <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
-                    <span>Voltar</span>
-                </a>
-                <h1 class="header-titulo">Depósito</h1>
-                <div style="width: 80px;"></div>
+        <div class="header-topo">
+            <a class="botao-voltar" th:href="@{/corrente}">
+                <span id="icone-voltar" class="material-symbols-outlined">arrow_back_ios</span>
+                <span>Voltar</span>
+            </a>
+            <h1 class="header-titulo">Depósito</h1>
+            <div id="header-espaco"></div>
+        </div>
+        <div class="header-saldo">
+            <div>
+                <p id="header-saldo-titulo">Saldo Atual</p>
+                <strong id="saldo-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" class="header-valor">0.00</strong>
             </div>
-            <div class="header-saldo">
-                <div>
-                    <p id="header-saldo-titulo">Saldo Atual</p>
-                    <strong id="saldo-valor" th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 2)}" class="header-valor">0.00</strong>
-                </div>
-                <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" type="button">
-                    <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
-                    <span id="texto-icone">Ocultar</span>
-                </button>
-            </div>
-        </header>
+            <button id="botao-mostrar-saldo" th:data-saldo="${usuario.saldo}" type="button">
+                <span id="mostrar-saldo-icone" class="material-symbols-outlined">visibility</span>
+                <span id="texto-icone">Ocultar</span>
+            </button>
+        </div>
         <section class="card">
             <form method="post" id="formulario">
                 <div id="campo-saldo">

@@ -130,6 +130,10 @@
     font-size: 26px;
 }
 
+#header-espaco {
+    width: 80px;
+}
+
 .header-saldo {
     background-color: var(--cor-fundo-saldo);
     color: var(--cor-texto-saldo);

@@ -53,7 +53,19 @@
         font-size: 22px;
     }
 
+    #icone-busca {
+        font-size: 24px;
+        left: 10px;
+    }
+
+    #campo-busca {
+        padding: 16px 16px 16px 40px;
+        font-size: 16px;
+    }
+
     .tag {
         width: 100%;
+        padding: 12px;
+        font-size: 14px;
     }
 }

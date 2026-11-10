@@ -1,4 +1,9 @@
 @media screen and (max-width: 768px) {
+    .header-topo {
+        flex-direction: column;
+        gap: 24px;
+    }
+
     .botao-voltar {
         transition: none;
     }
@@ -9,6 +14,18 @@
 
     .botao-voltar:active {
         color: var(--cor-texto-voltar-hover);
+    }
+
+    #icone-voltar {
+        font-size: 26px;
+    }
+
+    .header-titulo {
+        font-size: 28px;
+    }
+
+    #header-espaco {
+        display: none;
     }
 
     label {
