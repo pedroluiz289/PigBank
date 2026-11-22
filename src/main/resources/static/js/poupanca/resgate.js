@@ -118,6 +118,13 @@ document.getElementById("formulario").addEventListener("submit", function(evento
 
     const valorInput = saldoInput.value.replace(",", ".");
     const saldoValor = document.getElementById("saldo-valor");
+    const botaoLimpar = document.getElementById("botao-limpar");
+    const botaoResgate = document.getElementById("botao-resgate");
+    const textoBotaoResgate = document.getElementById("texto-botao");
+
+    botaoLimpar.disabled = true;
+    botaoResgate.disabled = true;
+    textoBotaoResgate.textContent = "Confirmando o Resgate...";
 
     const dataFormulario = {
         saldo: parseFloat(valorInput)
@@ -147,5 +154,10 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     })
     .catch(erro => {
         mostrarNotificacao(false, erro);
+    })
+    .finally(() => {
+        botaoLimpar.disabled = false;
+        botaoResgate.disabled = false;
+        textoBotaoResgate.textContent = "Confirmar Resgate";
     });
 });

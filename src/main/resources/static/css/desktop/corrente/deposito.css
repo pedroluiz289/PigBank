@@ -267,6 +267,10 @@ label {
     border-color: var(--cor-borda-botao-limpar-hover);
 }
 
+#botao-limpar:disabled {
+    opacity: 0.35;
+}
+
 #botao-deposito {
     flex: 1;
     padding: 16px;
@@ -287,6 +291,10 @@ label {
 #botao-deposito:hover {
     background-color: var(--cor-fundo-botao-confirmacao-hover);
     box-shadow: 0px 4px 12px var(--cor-sombra-botao-confirmacao-hover);
+}
+
+#botao-deposito:disabled {
+    opacity: 0.35;
 }
 
 #notificacao:open {

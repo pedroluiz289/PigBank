@@ -133,6 +133,13 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     const valorInput = saldoInput.value.replace(",", ".");
     const saldoValor = document.getElementById("valor-saldo-disponivel");
     const valorLimite = document.getElementById("valor-limite-disponivel");
+    const botaoSaque = document.getElementById("botao-saque");
+    const boatoLimpar = document.getElementById("botao-limpar");
+    const textoBotaoSaque = document.getElementById("texto-botao");
+
+    botaoSaque.disabled = true;
+    boatoLimpar.disabled = true;
+    textoBotaoSaque.textContent = "Confirmando o Saque...";
 
     const dataFormulario = {
         saldo: parseFloat(valorInput)
@@ -174,5 +181,10 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     })
     .catch(erro => {
         mostrarNotificacao(false, erro);
+    })
+    .finally(() => {
+        botaoSaque.disabled = false;
+        boatoLimpar.disabled = false;
+        textoBotaoSaque.textContent = "Confirmar Saque";
     });
 });

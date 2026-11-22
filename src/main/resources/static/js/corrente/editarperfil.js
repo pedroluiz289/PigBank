@@ -45,6 +45,11 @@ document.getElementById("card-principal").addEventListener("submit", function(ev
     evento.preventDefault();
 
     const novoNome = document.getElementById("nome-input").value;
+    const botaoSalvar = document.getElementById("botao-salvar");
+    const textoBotaoSalvar = document.getElementById("texto-botao");
+
+    botaoSalvar.disabled = true;
+    textoBotaoSalvar.textContent = "Salvando...";
 
     const dataFormulario = {
         nome: novoNome
@@ -67,5 +72,9 @@ document.getElementById("card-principal").addEventListener("submit", function(ev
     })
     .catch(erro => {
         mostrarNotificacao(false, erro);
-    });
+    })
+    .finally(() => {
+        botaoSalvar.disabled = false;
+        textoBotaoSalvar.textContent = "Salvar Alterações";
+    })
 });

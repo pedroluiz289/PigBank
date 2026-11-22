@@ -205,6 +205,10 @@
     box-shadow: 0px 4px 12px var(--cor-sombra-botao-salvar-hover);
 }
 
+#botao-salvar:disabled {
+    opacity: 0.35;
+}
+
 #notificacao:open {
     display: flex;
     align-items: center;

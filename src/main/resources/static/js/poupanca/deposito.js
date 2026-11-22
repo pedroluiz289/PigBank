@@ -118,6 +118,13 @@ document.getElementById("formulario").addEventListener("submit", function(evento
 
     const valorInput = saldoInput.value.replace(",", ".");
     const saldoValor = document.getElementById("saldo-valor");
+    const botaoLimpar = document.getElementById("botao-limpar");
+    const botaoDeposito = document.getElementById("botao-deposito");
+    const textoBotaoDeposito = document.getElementById("texto-botao");
+
+    botaoLimpar.disabled = true;
+    botaoDeposito.disabled = true;
+    textoBotaoDeposito.textContent = "Confirmando o Depósito...";
 
     const dataFormulario = {
         saldo: parseFloat(valorInput)
@@ -147,5 +154,10 @@ document.getElementById("formulario").addEventListener("submit", function(evento
     })
     .catch(erro => {
         mostrarNotificacao(false, erro);
-    });
+    })
+    .finally(() => {
+        botaoLimpar.disabled = false;
+        botaoDeposito.disabled = false;
+        textoBotaoDeposito.textContent = "Confirmar Depósito";
+    })
 });
